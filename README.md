@@ -1,5 +1,10 @@
 <img src="/defra-ruby-validators.png" alt="Defra ruby validators logo" />
 
+[![Build Status](https://travis-ci.com/DEFRA/defra-ruby-validators.svg?branch=master)](https://travis-ci.com/DEFRA/defra-ruby-validators)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a0f8611f1a879786f642/maintainability)](https://codeclimate.com/github/DEFRA/defra-ruby-validators/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a0f8611f1a879786f642/test_coverage)](https://codeclimate.com/github/DEFRA/defra-ruby-validators/test_coverage)
+[![Licence](https://img.shields.io/badge/Licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
+
 Package of validations commonly used in Defra Rails based digital services.
 
 ## Installation
