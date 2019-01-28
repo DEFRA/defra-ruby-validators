@@ -1,7 +1,7 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=8efeb1a8373dafb8697aac6eea657464f119181de12b081941cbef146aaba209
-    - secure: "dEFcvzPrGVZ5SH0yC+paTZhYPdY229+ppy+4TCZFy4SlsxMcjtDP2431ck6EfQK95fjho0bcspkseSYBLp3Li4bpLFQF9G88aPD+KN91eZqyMK0YPSz/LtRKEaszuwDPL8k5q+kUJq45GfbNkhE2Mvze/GBcP2aHAV7Z1gnH5NoIhk89qFz2uC59Szd0h46rvOmuwAFTc1wHAn+ZG2LjPG2fs60z+w4vaFtVOb/3r6Lph9+BPswCSgP9XPVoMsT8sokf+ZN/+B8pxKhp1rwJtE/cGRa/ZmZqigEUtwJ7dJA3+QnlVLMdu0Wr+gygaMYbLuUm0QglbYTf/l5A5ofnaSBTRDDmQZocp9hitp4yaz9k4vxOYNnhvk/RMjTC44uJeYscbPdJMwF1vKH6C49Vp1Ubvwava5A8FcwWX4SrXWo5XWKc7LlYd+SpmY6MQSGdlL66BmIx5cPgvXn41IecG5sTVJW13HqF0Ai0xYxAEU+kuHVdKrFFW71fWX5cVxaHhLKhC7OlcYgagPy9gC1Tzeqyjquw6bU24nPC7C9v1DwuG8BnKFs8w3+VcK7E42E7wJsIUNasfHcLVJMKDVGHNLJkH9cWvrYugsjpkd/+lD9ky3VjrGtFw8uyFa6+XqjBxiszUwKjnb0JKmv7SQOVaGkYV3SF2tW6l9uEAjCCPLY="
+    - secure: dEFcvzPrGVZ5SH0yC+paTZhYPdY229+ppy+4TCZFy4SlsxMcjtDP2431ck6EfQK95fjho0bcspkseSYBLp3Li4bpLFQF9G88aPD+KN91eZqyMK0YPSz/LtRKEaszuwDPL8k5q+kUJq45GfbNkhE2Mvze/GBcP2aHAV7Z1gnH5NoIhk89qFz2uC59Szd0h46rvOmuwAFTc1wHAn+ZG2LjPG2fs60z+w4vaFtVOb/3r6Lph9+BPswCSgP9XPVoMsT8sokf+ZN/+B8pxKhp1rwJtE/cGRa/ZmZqigEUtwJ7dJA3+QnlVLMdu0Wr+gygaMYbLuUm0QglbYTf/l5A5ofnaSBTRDDmQZocp9hitp4yaz9k4vxOYNnhvk/RMjTC44uJeYscbPdJMwF1vKH6C49Vp1Ubvwava5A8FcwWX4SrXWo5XWKc7LlYd+SpmY6MQSGdlL66BmIx5cPgvXn41IecG5sTVJW13HqF0Ai0xYxAEU+kuHVdKrFFW71fWX5cVxaHhLKhC7OlcYgagPy9gC1Tzeqyjquw6bU24nPC7C9v1DwuG8BnKFs8w3+VcK7E42E7wJsIUNasfHcLVJMKDVGHNLJkH9cWvrYugsjpkd/+lD9ky3VjrGtFw8uyFa6+XqjBxiszUwKjnb0JKmv7SQOVaGkYV3SF2tW6l9uEAjCCPLY=
 
 language: ruby
 rvm: 2.4.2
@@ -30,5 +30,5 @@ before_script:
   # allows projects to control the version they are using (rather than getting)
   # surprise build failures.
   - bundle exec rubocop
-  after_script:
-    - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+after_script:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
