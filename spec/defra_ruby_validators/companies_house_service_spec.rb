@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 module DefraRubyValidators
   RSpec.describe CompaniesHouseService do
     let(:companies_house_service) { CompaniesHouseService.new("09360070") }

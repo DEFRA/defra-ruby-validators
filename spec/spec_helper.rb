@@ -2,7 +2,7 @@
 
 require "bundler/setup"
 
-# Test coverage report
+# Test coverage reporting
 require "simplecov"
 SimpleCov.start
 

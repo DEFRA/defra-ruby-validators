@@ -4,6 +4,8 @@ require "active_model"
 require "defra_ruby_validators/version"
 require "defra_ruby_validators/companies_house_service"
 
+require "defra_ruby_validators/companies_house_number_validator"
+
 module DefraRubyValidators
   # Enable the ability to configure the gem from its host app, rather than
   # reading directly from env vars. Derived from
