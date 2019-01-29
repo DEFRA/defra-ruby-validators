@@ -32,3 +32,11 @@ before_script:
   - bundle exec rubocop
 after_script:
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+
+deploy:
+  provider: rubygems
+  gem: defra_ruby_validators
+  on:
+    tags: true
+  api_key:
+    secure: "Z289y68wgUDPDUPZBjcmI4bI6wAju1a0orm6byQoVCR/3MvrprwB6HJwVawxds5yxDJjvLlZnRteusWfOqNhdkV+hKHeMlDujsURhm71SjmLxpcOFGzVOA0gKJIoHBiHaqPIY8Sa+vnmLEG1HZQ1AeO8e+sIYOOAbp8qVF3OTYL+nb4hrxrAqkw5gWSf1ikWOK2EMgt6hV6czqLLipIEBnW33swLPcQCXGYXN5Y8T12YwQWNVex5HTCQXh36h/bSdlcXWdLGhkY4S23H8H1e/Kc5bWoDSeMIX0uBRpuFthncVo4bmmSAID+JIyih5OwUcGTsgUY/CRycau9rgmFZM638hgiPmE5teC8nuUtm9J7/CZJtk/TJ4KyIPR02CxfxSaEShRTtBMFg+X6y4iHFxfKiPStRwjpv4PwXQSqjL59N2SQ870r9VzWxv1ZXdR3gk9VuW9Xt0JshYt7fVVv1LQRu3mkb3wsaFcUz2zl1yYD2jWAPuBPO33deEsBIZUTopOLbG2mv7wP5RJmgrjzZl63O+JuU4BwS2nIbwoymBz8ckt7oWgLzy/zHazQ1sQGiMVxS4SwtMsb4SxWXqs9Eb94oNJy1YYOm9fIrQAgdWmWgJCawBqoE7hxy2vlxBVeqMQHQ0nEdtoPkYnD+ReRM0OtW2odv6NXm3fRlckCBLXY="
