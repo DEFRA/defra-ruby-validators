@@ -1,29 +1,14 @@
 # frozen_string_literal: true
 
-require "defra_ruby_validators/version"
-
-require "defra_ruby_validators/companies_house_service"
+require "defra_ruby_validators/engine"
 
 module DefraRubyValidators
-
-  # Enable the ability to configure the gem from its host app, rather than
-  # reading directly from env vars.
-  # https://robots.thoughtbot.com/mygem-configure-block
-  class << self
-    attr_accessor :configuration
-  end
-
-  def self.configure
-    self.configuration ||= Configuration.new
-    yield(configuration)
-  end
-
-  class Configuration
-    attr_accessor :companies_house_host, :companies_house_api_key
-
-    def initialize
-      @companies_house_host = "https://api.companieshouse.gov.uk/company/"
-      @companies_house_api_key = nil
-    end
-  end
+  # See lib/defra_ruby_validators/validators.rb for the main content.
+  # We have this file which just require's engine.rb to support using the gem
+  # in a rails project.
+  # For our test suite, we just want the typical listing of `require "filex"`,
+  # as the engine references using Rails.
+  # We also have the gem setup to support being configured from the host app.
+  # This is all done in `validators.rb`, which is picked up by `engine.rb` as
+  # well.
 end
