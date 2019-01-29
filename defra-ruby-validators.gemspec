@@ -46,6 +46,8 @@ Gem::Specification.new do |spec|
   # ~/.bash_profile (or equivalent)
   # https://github.com/skywinder/github-changelog-generator#github-token
   spec.add_development_dependency "github_changelog_generator"
+  # Allows us to check in our tests that the right message is being picked up
+  spec.add_development_dependency "i18n"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rubocop"

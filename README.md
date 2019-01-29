@@ -12,7 +12,7 @@ Package of validations commonly used in Defra Rails based digital services.
 Add this line to your application's Gemfile
 
 ```ruby
-gem 'defra_ruby_validators'
+gem "defra_ruby_validators"
 ```
 
 And then update your dependencies by calling
@@ -34,23 +34,34 @@ This validator checks the company registration number provided. Specifically it 
 - SC534714
 - IP00141R
 
-If the format is valid, it then makes a call to companies house to validate that the number
+If the format is valid, it then makes a call to Companies House to validate that the number
 
 - is recognised
 - belongs to an 'active' company
 
 A company can be in various states for example liquidation, which means for the purposes of Defra its not a valid entity. So we check the status along with the number as part of the validation.
 
-Add it to your model using
+Add it to your model or form object using
 
 ```ruby
-validates :number, "defra_ruby_validators/companies_house_number": true
+validates :company_no, "defra_ruby_validators/companies_house_number": true
 ```
 
-A locale hint is available for your views, that details the restrictions, e.g
+A locale hint plus help text is also available for your views, that details what a registration number is and the restrictions, e.g
 
-```ruby
-  <span class="form-hint"><%= t('defra_validators.errors.companies_house_number.hint') %></span>
+```erb
+  <span class="form-hint"><%= t("defra_validators.companies_house_number.hint") %></span>
+
+  <div class="form-group">
+    <details>
+      <summary>
+        <span class="summary"><%= t("defra_validators.companies_house_number.help.heading") %></span>
+      </summary>
+      <div class="panel panel-border-narrow">
+        <p><%= t("defra_validators.companies_house_number.help.#{@form.business_type}") %></p>
+      </div>
+    </details>
+  </div>
 ```
 
 ## Contributing to this project
