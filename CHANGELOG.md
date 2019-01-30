@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.1.1](https://github.com/DEFRA/defra-ruby-validators/tree/v0.1.1) (2019-01-30)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v0.1.0...v0.1.1)
+
+**Fixed bugs:**
+
+- Fix missing translations [\#4](https://github.com/DEFRA/defra-ruby-validators/pull/4) ([Cruikshanks](https://github.com/Cruikshanks))
+
 ## [v0.1.0](https://github.com/DEFRA/defra-ruby-validators/tree/v0.1.0) (2019-01-30)
 **Implemented enhancements:**
 
