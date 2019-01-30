@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Defra ruby on rails validations"
   spec.description   = "Package of validations commonly used in Defra Rails based digital services"
 
-  spec.files = Dir["{bin,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  spec.files = Dir["{bin,config,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
   spec.test_files = Dir["spec/**/*"]
 
   spec.require_paths = ["lib"]
