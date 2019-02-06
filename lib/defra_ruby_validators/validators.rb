@@ -5,6 +5,7 @@ require "defra_ruby_validators/version"
 require "defra_ruby_validators/companies_house_service"
 
 require "defra_ruby_validators/companies_house_number_validator"
+require "defra_ruby_validators/true_false_validator"
 
 module DefraRubyValidators
   # Enable the ability to configure the gem from its host app, rather than

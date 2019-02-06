@@ -1,0 +1,6 @@
+en:
+  defra_ruby_validators:
+    true_false:
+      errors:
+        blank: You must answer this question
+        invalid: You must answer true or false for this question
