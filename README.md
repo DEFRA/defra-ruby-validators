@@ -65,6 +65,16 @@ A locale hint plus help text is also available for your views, that details what
   </div>
 ```
 
+### True / False
+
+This validator checks the value provided is either 'true' or 'false'. Note it expects a string and not a boolean value.
+
+Add it to your model or form object using
+
+```ruby
+validates :value, "defra_ruby_validators/true_false": true
+```
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
