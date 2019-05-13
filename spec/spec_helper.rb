@@ -6,8 +6,6 @@ require "bundler/setup"
 # This is as per its docs https://github.com/colszowka/simplecov#getting-started
 require "./spec/support/simplecov"
 
-# Support debugging in the tests
-require "byebug"
 # Load env vars from a text file
 require "dotenv/load"
 
