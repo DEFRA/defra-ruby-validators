@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "validators/version"
-
 module DefraRuby
   module Validators
+    VERSION = "0.1.1"
   end
 end

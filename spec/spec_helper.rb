@@ -11,7 +11,7 @@ require "byebug"
 # Load env vars from a text file
 require "dotenv/load"
 # Need to require our actual code files
-require "defra_ruby_validators/validators"
+Dir["./lib/defra_ruby/**/*.rb"].each { |file| require file }
 
 # The following line is provided for convenience purposes. It has the downside
 # of increasing the boot-up time by auto-requiring all files in the support
