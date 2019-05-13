@@ -32,7 +32,7 @@ module DefraRuby
           end
           it "adds an error with the correct message" do
             subject.valid?
-            expect(subject.errors[:company_no][0]).to eq(I18n.t("defra_ruby_validators.companies_house_number.errors.blank"))
+            expect(subject.errors[:company_no][0]).to eq("Enter a company registration number")
           end
         end
 
@@ -48,7 +48,7 @@ module DefraRuby
           end
           it "adds an error with the correct message" do
             subject.valid?
-            expect(subject.errors[:company_no][0]).to eq(I18n.t("defra_ruby_validators.companies_house_number.errors.invalid"))
+            expect(subject.errors[:company_no][0]).to start_with("Enter a valid number")
           end
         end
 
@@ -68,7 +68,7 @@ module DefraRuby
           end
           it "adds an error with the correct message" do
             subject.valid?
-            expect(subject.errors[:company_no][0]).to eq(I18n.t("defra_ruby_validators.companies_house_number.errors.not_found"))
+            expect(subject.errors[:company_no][0]).to eq("Companies House couldn't find a company with this number")
           end
         end
 
@@ -88,7 +88,7 @@ module DefraRuby
           end
           it "adds an error with the correct message" do
             subject.valid?
-            expect(subject.errors[:company_no][0]).to eq(I18n.t("defra_ruby_validators.companies_house_number.errors.inactive"))
+            expect(subject.errors[:company_no][0]).to eq("Your company must be registered as an active company")
           end
         end
       end
@@ -109,7 +109,7 @@ module DefraRuby
         end
         it "adds an error with the correct message" do
           subject.valid?
-          expect(subject.errors[:company_no][0]).to eq(I18n.t("defra_ruby_validators.companies_house_number.errors.error"))
+          expect(subject.errors[:company_no][0]).to start_with("There was an error connecting")
         end
       end
 

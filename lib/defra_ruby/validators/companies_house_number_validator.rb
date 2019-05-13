@@ -50,7 +50,7 @@ module DefraRuby
       end
 
       def error_message(error)
-        I18n.t("defra_ruby_validators.companies_house_number.errors.#{error}")
+        I18n.t("defra_ruby.validators.companies_house_number.errors.#{error}")
       end
 
     end
