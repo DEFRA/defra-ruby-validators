@@ -3,11 +3,11 @@
 $LOAD_PATH.push File.expand_path("lib", __dir__)
 
 # Maintain your gem"s version:
-require "defra_ruby_validators/version"
+require "defra_ruby/validators/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "defra_ruby_validators"
-  spec.version       = DefraRubyValidators::VERSION
+  spec.version       = DefraRuby::Validators::VERSION
   spec.authors       = ["Defra"]
   spec.email         = ["alan.cruikshanks@environment-agency.gov.uk"]
   spec.license       = "The Open Government Licence (OGL) Version 3"

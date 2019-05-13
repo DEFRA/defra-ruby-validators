@@ -10,8 +10,12 @@ SimpleCov.start
 require "byebug"
 # Load env vars from a text file
 require "dotenv/load"
-# Need to require our actual code files
-require "defra_ruby_validators/validators"
+# Need to require our actual code files. We don't just require everything in
+# lib/defra_ruby because it contains the engine file which has a dependency on
+# rails. We don't have that as a dependency of this project because it is
+# a given this will be used in a rails project. So instead we require the
+# validators file directly to load the content covered by our tests.
+require "defra_ruby/validators"
 
 # The following line is provided for convenience purposes. It has the downside
 # of increasing the boot-up time by auto-requiring all files in the support

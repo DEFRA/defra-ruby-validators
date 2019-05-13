@@ -1,31 +1,44 @@
 env:
   global:
   - CC_TEST_REPORTER_ID=8efeb1a8373dafb8697aac6eea657464f119181de12b081941cbef146aaba209
-  - secure: dEFcvzPrGVZ5SH0yC+paTZhYPdY229+ppy+4TCZFy4SlsxMcjtDP2431ck6EfQK95fjho0bcspkseSYBLp3Li4bpLFQF9G88aPD+KN91eZqyMK0YPSz/LtRKEaszuwDPL8k5q+kUJq45GfbNkhE2Mvze/GBcP2aHAV7Z1gnH5NoIhk89qFz2uC59Szd0h46rvOmuwAFTc1wHAn+ZG2LjPG2fs60z+w4vaFtVOb/3r6Lph9+BPswCSgP9XPVoMsT8sokf+ZN/+B8pxKhp1rwJtE/cGRa/ZmZqigEUtwJ7dJA3+QnlVLMdu0Wr+gygaMYbLuUm0QglbYTf/l5A5ofnaSBTRDDmQZocp9hitp4yaz9k4vxOYNnhvk/RMjTC44uJeYscbPdJMwF1vKH6C49Vp1Ubvwava5A8FcwWX4SrXWo5XWKc7LlYd+SpmY6MQSGdlL66BmIx5cPgvXn41IecG5sTVJW13HqF0Ai0xYxAEU+kuHVdKrFFW71fWX5cVxaHhLKhC7OlcYgagPy9gC1Tzeqyjquw6bU24nPC7C9v1DwuG8BnKFs8w3+VcK7E42E7wJsIUNasfHcLVJMKDVGHNLJkH9cWvrYugsjpkd/+lD9ky3VjrGtFw8uyFa6+XqjBxiszUwKjnb0JKmv7SQOVaGkYV3SF2tW6l9uEAjCCPLY=
+  - COMPANIES_HOUSE_API_KEY=secretkey
+
 language: ruby
 rvm: 2.4.2
 cache: bundler
+
+# Travis CI clones repositories to a depth of 50 commits, which is only really
+# useful if you are performing git operations.
+# https://docs.travis-ci.com/user/customizing-the-build/#Git-Clone-Depth
 git:
   depth: 3
-services:
-- mongodb
+
 before_install:
 - export TZ=UTC
 - gem install -v 1.17.2 bundler --no-rdoc --no-ri
+
 before_script:
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-  > ./cc-test-reporter; fi
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build;
-  fi
-- bundle exec rubocop
+  # Setup to support the CodeClimate test coverage submission
+  # As per CodeClimate's documentation, they suggest only running
+  # ./cc-test-reporter commands on travis-ci push builds only. Hence we wrap all
+  # the codeclimate test coverage related commands in a check that tests if we
+  # are in a pull request or not.
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build; fi
+  # Run rubocop. It's installed as a dependency (hence no install step) as this
+  # allows projects to control the version they are using (rather than getting)
+  # surprise build failures.
+  - bundle exec rubocop
+
 after_script:
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code
-  $TRAVIS_TEST_RESULT; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+
 deploy:
   provider: rubygems
+  api_key:
+    secure: "GooT2LVu6l9EMGdJFiRE5xC1FAxQ6ts8z/fxEMD6H4NUlZjvqdBOPkCtLybBWGYnEeaONgcG9sPWI2woah+cw4eAdxeFgnpEIjioA55+L4PGXwisKkoG332o7U0C4IfMxF7Si8fbD1RDrsijOG5EANGK+ip5ImsFeO67wo3L8CokxRrjyAdKI1sFfxBct0WHiHOSpei2F0rJEHrTWq1cHjNGeONONjEDbtQoRJG6BLqUct6OFR9Wpf634V/FOPmJl5LYeQ0n7aCFTDWzV4zAMZw3yrMFg038QJkaaoPuXwf+ZvYOu+yadctdPVwKDYStcvTxLY3Vp2Da1zFQt80JiWb/CqKnNei13gLlefQ2hsLERbxZ5qpOqv2sO8O30P2MbpncXkGCak2zrtrTwach5HIe6fsBTiRSEXWCtPY9R6wz0Kb+yGPwDttcH6lHtAhpcCMKcJ+NCcYYV4VwTgDlvhBXgb5Bk4eFdiHipVvJdS1WG8sT00NHvtvR5fHNr57gbwlHvdPzK/16Txtyv9HuY0NuoK9QQH281CnKCP24wdKOz7nY/c3HQ/wJFhSdTL7WdqbibrbwzfGvSIJcLaBYzVXS+N4uMPjKO7xXqX8xcZaP96ja3trrumJ753USWOWm6X+wy1c+gQMSztDkeLm46tozOJF1fIRyuJqoWDucdwc="
   gem: defra_ruby_validators
   on:
     tags: true
-  api_key:
-    secure: "GooT2LVu6l9EMGdJFiRE5xC1FAxQ6ts8z/fxEMD6H4NUlZjvqdBOPkCtLybBWGYnEeaONgcG9sPWI2woah+cw4eAdxeFgnpEIjioA55+L4PGXwisKkoG332o7U0C4IfMxF7Si8fbD1RDrsijOG5EANGK+ip5ImsFeO67wo3L8CokxRrjyAdKI1sFfxBct0WHiHOSpei2F0rJEHrTWq1cHjNGeONONjEDbtQoRJG6BLqUct6OFR9Wpf634V/FOPmJl5LYeQ0n7aCFTDWzV4zAMZw3yrMFg038QJkaaoPuXwf+ZvYOu+yadctdPVwKDYStcvTxLY3Vp2Da1zFQt80JiWb/CqKnNei13gLlefQ2hsLERbxZ5qpOqv2sO8O30P2MbpncXkGCak2zrtrTwach5HIe6fsBTiRSEXWCtPY9R6wz0Kb+yGPwDttcH6lHtAhpcCMKcJ+NCcYYV4VwTgDlvhBXgb5Bk4eFdiHipVvJdS1WG8sT00NHvtvR5fHNr57gbwlHvdPzK/16Txtyv9HuY0NuoK9QQH281CnKCP24wdKOz7nY/c3HQ/wJFhSdTL7WdqbibrbwzfGvSIJcLaBYzVXS+N4uMPjKO7xXqX8xcZaP96ja3trrumJ753USWOWm6X+wy1c+gQMSztDkeLm46tozOJF1fIRyuJqoWDucdwc="
+    repo: DEFRA/defra-ruby-validators
