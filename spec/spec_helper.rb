@@ -2,9 +2,9 @@
 
 require "bundler/setup"
 
-# Test coverage reporting
-require "simplecov"
-SimpleCov.start
+# Require and run our simplecov initializer as the very first thing we do.
+# This is as per its docs https://github.com/colszowka/simplecov#getting-started
+require "./spec/support/simplecov"
 
 # Support debugging in the tests
 require "byebug"
@@ -17,10 +17,18 @@ require "dotenv/load"
 # validators file directly to load the content covered by our tests.
 require "defra_ruby/validators"
 
-# The following line is provided for convenience purposes. It has the downside
-# of increasing the boot-up time by auto-requiring all files in the support
-# directory. However in a small gem like this the increase should be neglible
-Dir[File.join(__dir__, "support", "**", "*.rb")].each { |f| require f }
+# Requires supporting ruby files with custom matchers and macros, etc, in
+# spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
+# run as spec files by default. This means that files in spec/support that end
+# in _spec.rb will both be required and run as specs, causing the specs to be
+# run twice. It is recommended that you do not name files matching this glob to
+# end with _spec.rb. You can configure this pattern with the --pattern
+# option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
+#
+# We make an exception for simplecov because that will already have been
+# required and run at the very top of spec_helper.rb
+support_files = Dir["./spec/support/**/*.rb"].reject { |file| file == "./spec/support/simplecov.rb" }
+support_files.each { |f| require f }
 
 RSpec.configure do |config|
   # Allows RSpec to persist some state between runs in order to support
