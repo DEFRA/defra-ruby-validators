@@ -35,7 +35,6 @@ Gem::Specification.new do |spec|
   # Use rest-client for external requests, eg. to Companies House
   spec.add_dependency "rest-client", "~> 2.0"
 
-  spec.add_development_dependency "byebug"
   spec.add_development_dependency "defra_ruby_style"
   # Shim to load environment variables from a .env file into ENV
   spec.add_development_dependency "dotenv"
@@ -48,6 +47,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "github_changelog_generator"
   # Allows us to check in our tests that the right message is being picked up
   spec.add_development_dependency "i18n"
+  # Adds step-by-step debugging and stack navigation capabilities to pry using
+  # byebug
+  spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rubocop"
