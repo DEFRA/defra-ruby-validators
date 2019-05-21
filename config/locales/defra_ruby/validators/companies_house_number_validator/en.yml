@@ -1,7 +1,7 @@
 en:
   defra_ruby:
     validators:
-      companies_house_number:
+      CompaniesHouseNumberValidator:
         hint: An 8 digit number, or 2 letters followed by a 6 digit number, or 2 letters followed by 5 digits and another letter
         help:
           heading: What's a registration number?

@@ -6,6 +6,7 @@ require_relative "validators/version"
 require_relative "validators/configuration"
 require_relative "validators/companies_house_service"
 
+require_relative "validators/base_validator"
 require_relative "validators/companies_house_number_validator"
 
 module DefraRuby

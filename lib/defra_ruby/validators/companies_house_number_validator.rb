@@ -2,7 +2,7 @@
 
 module DefraRuby
   module Validators
-    class CompaniesHouseNumberValidator < ActiveModel::EachValidator
+    class CompaniesHouseNumberValidator < BaseValidator
 
       # Examples we need to validate are
       # 10997904, 09764739
@@ -47,10 +47,6 @@ module DefraRuby
         end
       rescue StandardError
         record.errors[attribute] << error_message("error")
-      end
-
-      def error_message(error)
-        I18n.t("defra_ruby.validators.companies_house_number.errors.#{error}")
       end
 
     end
