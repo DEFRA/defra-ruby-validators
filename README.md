@@ -51,15 +51,15 @@ validates :company_no, "defra_ruby/validators/companies_house_number": true
 A locale hint plus help text is also available for your views, that details what a registration number is and the restrictions, e.g
 
 ```erb
-  <span class="form-hint"><%= t("defra_ruby.validators.companies_house_number.hint") %></span>
+  <span class="form-hint"><%= t("defra_ruby.validators.CompaniesHouseNumberValidator.hint") %></span>
 
   <div class="form-group">
     <details>
       <summary>
-        <span class="summary"><%= t("defra_ruby.validators.companies_house_number.help.heading") %></span>
+        <span class="summary"><%= t("defra_ruby.validators.CompaniesHouseNumberValidator.help.heading") %></span>
       </summary>
       <div class="panel panel-border-narrow">
-        <p><%= t("defra_ruby.validators.companies_house_number.help.#{@form.business_type}") %></p>
+        <p><%= t("defra_ruby.validators.CompaniesHouseNumberValidator.help.#{@form.business_type}") %></p>
       </div>
     </details>
   </div>
