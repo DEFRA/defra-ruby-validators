@@ -2,127 +2,86 @@
 
 require "spec_helper"
 
+module Test
+  CompaniesHouseNumberValidatable = Struct.new(:company_no) do
+    include ActiveModel::Validations
+
+    validates :company_no, "defra_ruby/validators/companies_house_number": true
+  end
+end
+
 module DefraRuby
   module Validators
     RSpec.describe CompaniesHouseNumberValidator do
-      context "when given a valid company number" do
-        before do
-          allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:active)
-        end
 
-        %w[10997904 09764739 SC534714 IP00141R].each do |company_no|
-          context "like #{company_no}" do
-            it "confirms the number is valid" do
-              expect(DummyCompaniesHouseNumber.new(company_no)).to be_valid
+      valid_numbers = %w[10997904 09764739 SC534714 IP00141R]
+      invalid_format_number = "foobar42"
+      unknown_number = "99999999"
+      inactive_number = "07281919"
+
+      it_behaves_like "a validator"
+
+      describe "#validate_each" do
+        context "when given a valid company number" do
+          before do
+            allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:active)
+          end
+
+          valid_numbers.each do |company_no|
+            context "like #{company_no}" do
+              it_behaves_like "a valid record", Test::CompaniesHouseNumberValidatable.new(company_no)
             end
           end
         end
-      end
 
-      context "when given an invalid company number" do
-        context "because it is blank" do
-          subject { DummyCompaniesHouseNumber.new("") }
+        context "when given an invalid company number" do
+          context "because it is blank" do
+            validatable = Test::CompaniesHouseNumberValidatable.new
+            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :blank)
 
-          it "confirms the number is not valid" do
-            expect(subject).to_not be_valid
+            it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
-          it "adds an error to the subject's errors collection" do
-            subject.valid?
-            expect(subject.errors.count).to eq(1)
+
+          context "because the format is wrong" do
+            validatable = Test::CompaniesHouseNumberValidatable.new(invalid_format_number)
+            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :invalid)
+
+            it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
-          it "adds an error with the correct message" do
-            subject.valid?
-            expect(subject.errors[:company_no][0]).to eq("Enter a company registration number")
+
+          context "because it's not found on companies house" do
+            before do
+              allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:not_found)
+            end
+
+            validatable = Test::CompaniesHouseNumberValidatable.new(unknown_number)
+            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :not_found)
+
+            it_behaves_like "an invalid record", validatable, :company_no, error_message
+          end
+
+          context "because it's not 'active' on companies house" do
+            before do
+              allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:inactive)
+            end
+
+            validatable = Test::CompaniesHouseNumberValidatable.new(inactive_number)
+            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :inactive)
+
+            it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
         end
 
-        context "because the format is wrong" do
-          subject { DummyCompaniesHouseNumber.new("foobar42") }
-
-          it "confirms the number is not valid" do
-            expect(subject).to_not be_valid
-          end
-          it "adds an error to the subject's errors collection" do
-            subject.valid?
-            expect(subject.errors.count).to eq(1)
-          end
-          it "adds an error with the correct message" do
-            subject.valid?
-            expect(subject.errors[:company_no][0]).to start_with("Enter a valid number")
-          end
-        end
-
-        context "because it's not found on companies house" do
+        context "when there is an error connecting with companies house" do
           before do
-            allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:not_found)
+            allow_any_instance_of(CompaniesHouseService).to receive(:status).and_raise(StandardError)
           end
 
-          subject { DummyCompaniesHouseNumber.new("99999999") }
+          validatable = Test::CompaniesHouseNumberValidatable.new(valid_numbers.sample)
+          error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :error)
 
-          it "confirms the number is not valid" do
-            expect(subject).to_not be_valid
-          end
-          it "adds an error to the subject's errors collection" do
-            subject.valid?
-            expect(subject.errors.count).to eq(1)
-          end
-          it "adds an error with the correct message" do
-            subject.valid?
-            expect(subject.errors[:company_no][0]).to eq("Companies House couldn't find a company with this number")
-          end
+          it_behaves_like "an invalid record", validatable, :company_no, error_message
         end
-
-        context "because it's not 'active' on companies house" do
-          before do
-            allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:inactive)
-          end
-
-          subject { DummyCompaniesHouseNumber.new("07281919") }
-
-          it "confirms the number is not valid" do
-            expect(subject).to_not be_valid
-          end
-          it "adds an error to the subject's errors collection" do
-            subject.valid?
-            expect(subject.errors.count).to eq(1)
-          end
-          it "adds an error with the correct message" do
-            subject.valid?
-            expect(subject.errors[:company_no][0]).to eq("Your company must be registered as an active company")
-          end
-        end
-      end
-
-      context "when there is an error connecting with companies house" do
-        before do
-          allow_any_instance_of(CompaniesHouseService).to receive(:status).and_raise(StandardError)
-        end
-
-        subject { DummyCompaniesHouseNumber.new("10997904") }
-
-        it "confirms the number is not valid" do
-          expect(subject).to_not be_valid
-        end
-        it "adds an error to the subject's errors collection" do
-          subject.valid?
-          expect(subject.errors.count).to eq(1)
-        end
-        it "adds an error with the correct message" do
-          subject.valid?
-          expect(subject.errors[:company_no][0]).to start_with("There was an error connecting")
-        end
-      end
-
-      class DummyCompaniesHouseNumber
-        include ActiveModel::Model
-
-        attr_accessor :company_no
-
-        def initialize(company_no)
-          @company_no = company_no
-        end
-
-        validates :company_no, "defra_ruby/validators/companies_house_number": true
       end
     end
   end
