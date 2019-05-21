@@ -6,8 +6,8 @@ module DefraRuby
 
       protected
 
-      def error_message(error)
-        I18n.t("defra_ruby.validators.#{class_name}.errors.#{error}")
+      def error_message(attribute, error)
+        I18n.t("defra_ruby.validators.#{class_name}.#{attribute}.#{error}")
       end
 
       private
