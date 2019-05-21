@@ -2,11 +2,6 @@ en:
   defra_ruby:
     validators:
       CompaniesHouseNumberValidator:
-        hint: An 8 digit number, or 2 letters followed by a 6 digit number, or 2 letters followed by 5 digits and another letter
-        help:
-          heading: What's a registration number?
-          limitedCompany: This is issued when the company is registered, and can be found on your Certificate of Incorporation and any paperwork from Companies House.
-          limitedLiabilityPartnership: This is issued when the limited liability partnership is registered, and can be found on your Certificate of Incorporation and any paperwork from Companies House.
         errors:
           blank: Enter a company registration number
           invalid: "Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits, or 2 letters followed by 5 digits and another letter. If your number has only 7 digits, enter it with a zero at the start."
