@@ -1,5 +1,25 @@
 # Change Log
 
+## [v1.0.0](https://github.com/DEFRA/defra-ruby-validators/tree/v1.0.0) (2019-05-21)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v0.1.1...v1.0.0)
+
+**Implemented enhancements:**
+
+- Remove byebug and swap it with pry-byebug [\#9](https://github.com/DEFRA/defra-ruby-validators/pull/9) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Fixed bugs:**
+
+- Fix references in README [\#7](https://github.com/DEFRA/defra-ruby-validators/pull/7) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Merged pull requests:**
+
+- Refactor Companies House Validator unit tests [\#13](https://github.com/DEFRA/defra-ruby-validators/pull/13) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add use of attribute to error message [\#12](https://github.com/DEFRA/defra-ruby-validators/pull/12) ([Cruikshanks](https://github.com/Cruikshanks))
+- Remove companies house number help text [\#11](https://github.com/DEFRA/defra-ruby-validators/pull/11) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add base validator class [\#10](https://github.com/DEFRA/defra-ruby-validators/pull/10) ([Cruikshanks](https://github.com/Cruikshanks))
+- Make rspec support consistent [\#8](https://github.com/DEFRA/defra-ruby-validators/pull/8) ([Cruikshanks](https://github.com/Cruikshanks))
+- Refactor namespace to be DefraRuby::Validators [\#6](https://github.com/DEFRA/defra-ruby-validators/pull/6) ([Cruikshanks](https://github.com/Cruikshanks))
+
 ## [v0.1.1](https://github.com/DEFRA/defra-ruby-validators/tree/v0.1.1) (2019-01-30)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v0.1.0...v0.1.1)
 
