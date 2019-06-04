@@ -2,9 +2,11 @@
 
 module Helpers
   module Translator
-    def self.error_message(klass, attribute, error)
+    def self.error_message(klass:, attribute: nil, error:)
       class_name = klass_name(klass)
-      I18n.t("defra_ruby.validators.#{class_name}.#{attribute}.#{error}")
+      return I18n.t("defra_ruby.validators.#{class_name}.#{attribute}.#{error}") if attribute
+
+      I18n.t("defra_ruby.validators.#{class_name}.#{error}")
     end
 
     def self.klass_name(klass)

@@ -37,14 +37,22 @@ module DefraRuby
         context "when given an invalid company number" do
           context "because it is blank" do
             validatable = Test::CompaniesHouseNumberValidatable.new
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :blank)
+            error_message = Helpers::Translator.error_message(
+              klass: CompaniesHouseNumberValidator,
+              attribute: :company_no,
+              error: :blank
+            )
 
             it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
 
           context "because the format is wrong" do
             validatable = Test::CompaniesHouseNumberValidatable.new(invalid_format_number)
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :invalid)
+            error_message = Helpers::Translator.error_message(
+              klass: CompaniesHouseNumberValidator,
+              attribute: :company_no,
+              error: :invalid
+            )
 
             it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
@@ -55,7 +63,11 @@ module DefraRuby
             end
 
             validatable = Test::CompaniesHouseNumberValidatable.new(unknown_number)
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :not_found)
+            error_message = Helpers::Translator.error_message(
+              klass: CompaniesHouseNumberValidator,
+              attribute: :company_no,
+              error: :not_found
+            )
 
             it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
@@ -66,7 +78,11 @@ module DefraRuby
             end
 
             validatable = Test::CompaniesHouseNumberValidatable.new(inactive_number)
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :inactive)
+            error_message = Helpers::Translator.error_message(
+              klass: CompaniesHouseNumberValidator,
+              attribute: :company_no,
+              error: :inactive
+            )
 
             it_behaves_like "an invalid record", validatable, :company_no, error_message
           end
@@ -78,7 +94,11 @@ module DefraRuby
           end
 
           validatable = Test::CompaniesHouseNumberValidatable.new(valid_numbers.sample)
-          error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :company_no, :error)
+          error_message = Helpers::Translator.error_message(
+            klass: CompaniesHouseNumberValidator,
+            attribute: :company_no,
+            error: :error
+          )
 
           it_behaves_like "an invalid record", validatable, :company_no, error_message
         end
