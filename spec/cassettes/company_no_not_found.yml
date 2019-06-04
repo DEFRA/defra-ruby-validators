@@ -12,7 +12,7 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
-      - rest-client/2.0.2 (darwin18.5.0 x86_64) ruby/2.4.2p198
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.4.2p198
       Host:
       - api.companieshouse.gov.uk
       Authorization:
@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 13 May 2019 10:51:59 GMT
+      - Tue, 04 Jun 2019 22:42:41 GMT
       Pragma:
       - no-cache
       Server:
@@ -49,7 +49,7 @@ http_interactions:
       X-Ratelimit-Remain:
       - '598'
       X-Ratelimit-Reset:
-      - '1557745019'
+      - '1559688461'
       X-Ratelimit-Window:
       - 5m
       Content-Length:
@@ -60,5 +60,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"errors":[{"type":"ch:service","error":"company-profile-not-found"}]}'
     http_version: 
-  recorded_at: Mon, 13 May 2019 10:51:59 GMT
+  recorded_at: Tue, 04 Jun 2019 22:42:41 GMT
 recorded_with: VCR 4.0.0
