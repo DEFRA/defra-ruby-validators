@@ -33,7 +33,7 @@ This validator checks the value provided is one of our known business types (sol
 Add it to your model or form object using
 
 ```ruby
-validates :company_no, "defra_ruby/validators/business_type": true
+validates :business_type, "defra_ruby/validators/business_type": true
 ```
 
 ### Companies House number
@@ -58,6 +58,16 @@ Add it to your model or form object using
 validates :company_no, "defra_ruby/validators/companies_house_number": true
 ```
 
+### Token
+
+This validator checks the value is present and in the correct format, which in this case is that the value has a length of 24. If blank or not in a valid format it will return an error.
+
+Add it to your model or form object using
+
+```ruby
+validates :token, "defra_ruby/validators/token": true
+```
+
 ### True or false
 
 This validator checks the value provided is either `"true"` or `"false"`. If blank or not one of these it will return an error.
@@ -65,7 +75,7 @@ This validator checks the value provided is either `"true"` or `"false"`. If bla
 Add it to your model or form object using
 
 ```ruby
-validates :company_no, "defra_ruby/validators/true_false": true
+validates :is_a_farmer, "defra_ruby/validators/true_false": true
 ```
 
 ## Contributing to this project
