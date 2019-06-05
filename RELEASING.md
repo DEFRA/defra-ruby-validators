@@ -16,15 +16,19 @@ Essentially
 
 ## Update version.rb
 
-Update `lib/defra_ruby_validations/version.rb` to match the version number you intend to release with.
+Update `lib/defra_ruby/validators/version.rb` to match the version number you intend to release with.
 
 ```ruby
-module DefraRubyValidations
-  VERSION = "0.1.0"
+module DefraRuby
+  module Validators
+    VERSION = "1.0.0"
+  end
 end
 ```
 
 Commit the change and push to **master**. We don't create a PR for this as we rely on PR's to provide the content for our [CHANGELOG](CHANGELOG.md), so this would just make for a redundant entry.
+
+**Note.** You'll need to be an administrator on the repo to be able to push to **master**.
 
 ## Tag the repo
 

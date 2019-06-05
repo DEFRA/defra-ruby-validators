@@ -2,43 +2,29 @@ env:
   global:
   - CC_TEST_REPORTER_ID=8efeb1a8373dafb8697aac6eea657464f119181de12b081941cbef146aaba209
   - COMPANIES_HOUSE_API_KEY=secretkey
-
 language: ruby
 rvm: 2.4.2
 cache: bundler
-
-# Travis CI clones repositories to a depth of 50 commits, which is only really
-# useful if you are performing git operations.
-# https://docs.travis-ci.com/user/customizing-the-build/#Git-Clone-Depth
 git:
   depth: 3
-
 before_install:
 - export TZ=UTC
 - gem install -v 1.17.2 bundler --no-rdoc --no-ri
-
 before_script:
-  # Setup to support the CodeClimate test coverage submission
-  # As per CodeClimate's documentation, they suggest only running
-  # ./cc-test-reporter commands on travis-ci push builds only. Hence we wrap all
-  # the codeclimate test coverage related commands in a check that tests if we
-  # are in a pull request or not.
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build; fi
-  # Run rubocop. It's installed as a dependency (hence no install step) as this
-  # allows projects to control the version they are using (rather than getting)
-  # surprise build failures.
-  - bundle exec rubocop
-
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter; fi
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build;
+  fi
+- bundle exec rubocop
 after_script:
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
-
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code
+  $TRAVIS_TEST_RESULT; fi
 deploy:
   provider: rubygems
-  api_key:
-    secure: "GooT2LVu6l9EMGdJFiRE5xC1FAxQ6ts8z/fxEMD6H4NUlZjvqdBOPkCtLybBWGYnEeaONgcG9sPWI2woah+cw4eAdxeFgnpEIjioA55+L4PGXwisKkoG332o7U0C4IfMxF7Si8fbD1RDrsijOG5EANGK+ip5ImsFeO67wo3L8CokxRrjyAdKI1sFfxBct0WHiHOSpei2F0rJEHrTWq1cHjNGeONONjEDbtQoRJG6BLqUct6OFR9Wpf634V/FOPmJl5LYeQ0n7aCFTDWzV4zAMZw3yrMFg038QJkaaoPuXwf+ZvYOu+yadctdPVwKDYStcvTxLY3Vp2Da1zFQt80JiWb/CqKnNei13gLlefQ2hsLERbxZ5qpOqv2sO8O30P2MbpncXkGCak2zrtrTwach5HIe6fsBTiRSEXWCtPY9R6wz0Kb+yGPwDttcH6lHtAhpcCMKcJ+NCcYYV4VwTgDlvhBXgb5Bk4eFdiHipVvJdS1WG8sT00NHvtvR5fHNr57gbwlHvdPzK/16Txtyv9HuY0NuoK9QQH281CnKCP24wdKOz7nY/c3HQ/wJFhSdTL7WdqbibrbwzfGvSIJcLaBYzVXS+N4uMPjKO7xXqX8xcZaP96ja3trrumJ753USWOWm6X+wy1c+gQMSztDkeLm46tozOJF1fIRyuJqoWDucdwc="
   gem: defra_ruby_validators
   on:
     tags: true
     repo: DEFRA/defra-ruby-validators
+  api_key:
+    secure: iOxiZ6K2xOPkOiK1fpLSIp+fWPa6EBplDCL6K2LSpsFY0RSn6gX5njoNSgb7WhcoZzGys/sNht/9B6klQFRS3Gmeu5BjMktpusYCNSfk8ING4gcadRFgB2b7nMyhYNkAsK3vLXnD4foXmvY+q7uJl7eCf8ivz+wthF/0tTIF0YQNFQHig4X71Gxp0G9uYELwnkpJHBL3fHl+28SVetFp60n+or92P0zGuQNQ04w3fPdEWJTisG8DE8FLtaotgNQ6JHGRMNZKAReevrZaZXUXltiwp4dPKwVFZwknEasvrAusnAvUbe18QOguCbp/jD0RWgHX/cTajKmBEFkaV8ZoZ3OkJZwZ9R8+OEKV4MPY/PVnPkRen8nzL4D489ignncBlMmBpVhIibWUPzzapTO4ld/IGN6MdUUczPUuSm+baKVTKDVAnA6dX509eii/BEaHXweEQb2xipHU5edNq8DZFESKs0zJTXUo5l6B6xOyF8C2DfZaz0qes1ZyoXP3XTBR7n278g9csgcL6FWVFpknIZX3w+dWGCD0IHEjRR6XPlnUzexYUqK7WIxQIhBvTSITDS7Ig7pOiiOlWoP0CP6299m0Zgt5/bl4IMcjhidgtNFAYOR408rwatg8M3IC0W9z+FuTi3cTapGsSFq3BEv9Ve1b8Qw7W5w7sMzrilVJxaM=
