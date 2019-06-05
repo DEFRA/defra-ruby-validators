@@ -1,5 +1,22 @@
 # Change Log
 
+## [v1.1.0](https://github.com/DEFRA/defra-ruby-validators/tree/v1.1.0) (2019-06-05)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.0.0...v1.1.0)
+
+**Implemented enhancements:**
+
+- Add new TrueFalseValidator [\#15](https://github.com/DEFRA/defra-ruby-validators/pull/15) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Fixed bugs:**
+
+- Another attempt to fix Travis gem deployment [\#18](https://github.com/DEFRA/defra-ruby-validators/pull/18) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Merged pull requests:**
+
+- Update RELEASING and reset rubygems API key [\#17](https://github.com/DEFRA/defra-ruby-validators/pull/17) ([Cruikshanks](https://github.com/Cruikshanks))
+- Update README with true or false details [\#16](https://github.com/DEFRA/defra-ruby-validators/pull/16) ([Cruikshanks](https://github.com/Cruikshanks))
+- Make attribute optional in error message [\#14](https://github.com/DEFRA/defra-ruby-validators/pull/14) ([Cruikshanks](https://github.com/Cruikshanks))
+
 ## [v1.0.0](https://github.com/DEFRA/defra-ruby-validators/tree/v1.0.0) (2019-05-21)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v0.1.1...v1.0.0)
 
