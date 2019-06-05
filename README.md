@@ -48,6 +48,16 @@ Add it to your model or form object using
 validates :company_no, "defra_ruby/validators/companies_house_number": true
 ```
 
+### True or false
+
+This validator checks the value provided is either `"true"` or `"false"`. If blank or not one of these it will return an error.
+
+Add it to your model or form object using
+
+```ruby
+validates :company_no, "defra_ruby/validators/true_false": true
+```
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
