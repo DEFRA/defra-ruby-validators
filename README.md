@@ -26,6 +26,16 @@ bundle install
 
 With this gem installed, a number of active model based validators become available.
 
+### Business type
+
+This validator checks the value provided is one of our known business types (soleTrader, limitedCompany, partnership, limitedLiabilityPartnership, localAuthority, and charity). If blank or not one of these it will return an error.
+
+Add it to your model or form object using
+
+```ruby
+validates :company_no, "defra_ruby/validators/business_type": true
+```
+
 ### Companies House number
 
 This validator checks the company registration number provided. Specifically it first checks that it matches a known format. All registration numbers are 8 characters long but can be formatted in the following ways.
