@@ -32,6 +32,10 @@ Gem::Specification.new do |spec|
   # Include ActiveModel so that we have access to ActiveModel::Validations
   # ActiveModel::Validation is the central class within gem!
   spec.add_dependency "activemodel"
+  # Include ActiveSupport so that we have access to ActiveSupport::Concern
+  # and can then use concerns over modules for shared functionality between
+  # the validators
+  spec.add_dependency "activesupport"
   # Use rest-client for external requests, eg. to Companies House
   spec.add_dependency "rest-client", "~> 2.0"
 
