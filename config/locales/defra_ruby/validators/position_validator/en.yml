@@ -1,0 +1,6 @@
+en:
+  defra_ruby:
+    validators:
+      PositionValidator:
+        invalid: "The position must contain only letters, spaces, commas, full stops, hyphens and apostrophes"
+        too_long: "The position must have no more than 70 characters"

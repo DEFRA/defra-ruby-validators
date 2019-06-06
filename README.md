@@ -58,6 +58,16 @@ Add it to your model or form object using
 validates :company_no, "defra_ruby/validators/companies_house_number": true
 ```
 
+### Position
+
+This validator checks the value provided for 'position' i.e. someones role or title within an organisation. This is an optional field so the validator has to handle the value being blank. If it's not then it can be no longer than 70 characters and only include letters, spaces, commas, full stops, hyphens and apostrophes else it will return an error.
+
+Add it to your model or form object using
+
+```ruby
+validates :position, "defra_ruby/validators/position": true
+```
+
 ### Token
 
 This validator checks the value is present and in the correct format, which in this case is that the value has a length of 24. If blank or not in a valid format it will return an error.
