@@ -3,18 +3,16 @@
 module DefraRuby
   module Validators
     module CanValidateSelection
-      extend ActiveSupport::Concern
 
-      included do
-        private
+      private
 
-        def value_is_included?(record, attribute, value, valid_options)
-          return true if value.present? && valid_options.include?(value)
+      def value_is_included?(record, attribute, value, valid_options)
+        return true if value.present? && valid_options.include?(value)
 
-          record.errors[attribute] << error_message(error: "inclusion")
-          false
-        end
+        record.errors[attribute] << error_message(error: "inclusion")
+        false
       end
+
     end
   end
 end

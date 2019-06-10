@@ -3,19 +3,17 @@
 module DefraRuby
   module Validators
     module CanValidateCharacters
-      extend ActiveSupport::Concern
 
-      included do
-        private
+      private
 
-        def value_has_no_invalid_characters?(record, attribute, value)
-          # Name fields must contain only letters, spaces, commas, full stops, hyphens and apostrophes
-          return true if value.match?(/\A[-a-z\s,.']+\z/i)
+      def value_has_no_invalid_characters?(record, attribute, value)
+        # Name fields must contain only letters, spaces, commas, full stops, hyphens and apostrophes
+        return true if value.match?(/\A[-a-z\s,.']+\z/i)
 
-          record.errors[attribute] << error_message(error: "invalid")
-          false
-        end
+        record.errors[attribute] << error_message(error: "invalid")
+        false
       end
+
     end
   end
 end
