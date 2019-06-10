@@ -3,18 +3,16 @@
 module DefraRuby
   module Validators
     module CanValidateLength
-      extend ActiveSupport::Concern
 
-      included do
-        private
+      private
 
-        def value_is_not_too_long?(record, attribute, value, max_length)
-          return true if value.length <= max_length
+      def value_is_not_too_long?(record, attribute, value, max_length)
+        return true if value.length <= max_length
 
-          record.errors[attribute] << error_message(error: "too_long")
-          false
-        end
+        record.errors[attribute] << error_message(error: "too_long")
+        false
       end
+
     end
   end
 end
