@@ -14,15 +14,16 @@ module DefraRuby
   module Validators
     RSpec.describe BusinessTypeValidator do
 
-      valid_value = %w[soleTrader limitedCompany partnership limitedLiabilityPartnership localAuthority charity].sample
+      valid_type = %w[soleTrader limitedCompany partnership limitedLiabilityPartnership localAuthority charity].sample
+      invalid_type = "coven"
 
-      it_behaves_like "a validator"
+      it_behaves_like("a validator")
       it_behaves_like(
         "a selection validator",
         BusinessTypeValidator,
         Test::BusinessTypeValidatable,
         :business_type,
-        valid_value
+        valid: valid_type, invalid: invalid_type
       )
     end
   end

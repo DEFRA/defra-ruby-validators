@@ -14,13 +14,26 @@ module DefraRuby
   module Validators
     RSpec.describe PositionValidator, type: :model do
 
-      empty_position = ""
-      too_long_position = Helpers::TextGenerator.random_string(71) # The max length is 70.
+      valid_position = "Padawan"
+      too_long_position = Helpers::TextGenerator.random_string(PositionValidator::MAX_LENGTH + 1)
       invalid_position = "**Invalid_@_Position**"
+      empty_position = ""
 
-      it_behaves_like "a validator"
-      it_behaves_like "a length validator", PositionValidator, Test::PositionValidatable, :position, too_long_position
-      it_behaves_like "a characters validator", PositionValidator, Test::PositionValidatable, :position, invalid_position
+      it_behaves_like("a validator")
+      it_behaves_like(
+        "a length validator",
+        PositionValidator,
+        Test::PositionValidatable,
+        :position,
+        valid: valid_position, invalid: too_long_position
+      )
+      it_behaves_like(
+        "a characters validator",
+        PositionValidator,
+        Test::PositionValidatable,
+        :position,
+        valid: valid_position, invalid: invalid_position
+      )
 
       describe "#validate_each" do
         context "when the position is valid" do
