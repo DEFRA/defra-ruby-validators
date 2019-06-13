@@ -12,8 +12,8 @@ module DefraRuby
         return false unless value_has_no_invalid_characters?(record, attribute, value)
 
         max_length = 70
-        value_is_not_too_long?(record, attribute, value, max_length)
-        value_has_no_invalid_characters?(record, attribute, value)
+        value_is_not_too_long?(record, :position, value, max_length)
+        value_has_no_invalid_characters?(record, :position, value)
       end
 
     end

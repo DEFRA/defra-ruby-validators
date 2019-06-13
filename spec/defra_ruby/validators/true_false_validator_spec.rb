@@ -3,10 +3,10 @@
 require "spec_helper"
 
 module Test
-  TrueFalseValidatable = Struct.new(:response) do
+  TrueFalseValidatable = Struct.new(:attribute) do
     include ActiveModel::Validations
 
-    validates :response, "defra_ruby/validators/true_false": true
+    validates :attribute, "defra_ruby/validators/true_false": true
   end
 end
 
@@ -17,7 +17,7 @@ module DefraRuby
       valid_value = %w[true false].sample
 
       it_behaves_like "a validator"
-      it_behaves_like "a selection validator", TrueFalseValidator, Test::TrueFalseValidatable, :response, valid_value
+      it_behaves_like "a selection validator", TrueFalseValidator, Test::TrueFalseValidatable, :attribute, valid_value
     end
   end
 end

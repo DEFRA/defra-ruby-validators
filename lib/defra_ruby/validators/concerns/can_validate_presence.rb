@@ -9,7 +9,7 @@ module DefraRuby
       def value_is_present?(record, attribute, value)
         return true if value.present?
 
-        record.errors[attribute] << error_message(error: "blank")
+        record.errors[attribute] << error_message(attribute, :blank)
         false
       end
 

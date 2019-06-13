@@ -25,14 +25,14 @@ module DefraRuby
       def value_is_present?(record, attribute, value)
         return true if value.present?
 
-        record.errors[attribute] << error_message(attribute: attribute, error: "blank")
+        record.errors[attribute] << error_message(:company_no, :blank)
         false
       end
 
       def format_is_valid?(record, attribute, value)
         return true if value.match?(VALID_COMPANIES_HOUSE_REGISTRATION_NUMBER_REGEX)
 
-        record.errors[attribute] << error_message(attribute: attribute, error: "invalid")
+        record.errors[attribute] << error_message(:company_no, :invalid)
         false
       end
 
@@ -41,12 +41,12 @@ module DefraRuby
         when :active
           true
         when :inactive
-          record.errors[attribute] << error_message(attribute: attribute, error: "inactive")
+          record.errors[attribute] << error_message(:company_no, :inactive)
         when :not_found
-          record.errors[attribute] << error_message(attribute: attribute, error: "not_found")
+          record.errors[attribute] << error_message(:company_no, :not_found)
         end
       rescue StandardError
-        record.errors[attribute] << error_message(attribute: attribute, error: "error")
+        record.errors[attribute] << error_message(:company_no, :error)
       end
 
     end
