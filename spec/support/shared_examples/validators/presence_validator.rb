@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples "a presence validator" do |validator, validatable_class, property|
+RSpec.shared_examples "a presence validator" do |validator, validatable_class, attribute|
   it "includes CanValidatePresence" do
     included_modules = described_class.ancestors.select { |ancestor| ancestor.instance_of?(Module) }
 
@@ -9,12 +9,12 @@ RSpec.shared_examples "a presence validator" do |validator, validatable_class, p
   end
 
   describe "#validate_each" do
-    context "when the #{property} is not valid" do
-      context "because the #{property} is not present" do
+    context "when the #{attribute} is not valid" do
+      context "because the #{attribute} is not present" do
         validatable = validatable_class.new
-        error_message = Helpers::Translator.error_message(klass: validator, error: :blank)
+        error_message = Helpers::Translator.error_message(validator, attribute, :blank)
 
-        it_behaves_like "an invalid record", validatable, property, error_message
+        it_behaves_like "an invalid record", validatable, attribute, error_message
       end
     end
   end

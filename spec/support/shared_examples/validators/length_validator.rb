@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples "a length validator" do |validator, validatable_class, property, invalid_input|
+RSpec.shared_examples "a length validator" do |validator, validatable_class, attribute, invalid_input|
   it "includes CanValidateLength" do
     included_modules = described_class.ancestors.select { |ancestor| ancestor.instance_of?(Module) }
 
@@ -9,12 +9,12 @@ RSpec.shared_examples "a length validator" do |validator, validatable_class, pro
   end
 
   describe "#validate_each" do
-    context "when the #{property} is not valid" do
-      context "because the #{property} is too long" do
+    context "when the #{attribute} is not valid" do
+      context "because the #{attribute} is too long" do
         validatable = validatable_class.new(invalid_input)
-        error_message = Helpers::Translator.error_message(klass: validator, error: :too_long)
+        error_message = Helpers::Translator.error_message(validator, attribute, :too_long)
 
-        it_behaves_like "an invalid record", validatable, property, error_message
+        it_behaves_like "an invalid record", validatable, attribute, error_message
       end
     end
   end

@@ -3,10 +3,10 @@
 require "spec_helper"
 
 module Test
-  BusinessTypeValidatable = Struct.new(:response) do
+  BusinessTypeValidatable = Struct.new(:business_type) do
     include ActiveModel::Validations
 
-    validates :response, "defra_ruby/validators/business_type": true
+    validates :business_type, "defra_ruby/validators/business_type": true
   end
 end
 
@@ -21,7 +21,7 @@ module DefraRuby
         "a selection validator",
         BusinessTypeValidator,
         Test::BusinessTypeValidatable,
-        :response,
+        :business_type,
         valid_value
       )
     end

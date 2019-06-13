@@ -9,7 +9,7 @@ module DefraRuby
       def value_is_not_too_long?(record, attribute, value, max_length)
         return true if value.length <= max_length
 
-        record.errors[attribute] << error_message(error: "too_long")
+        record.errors[attribute] << error_message(attribute, :too_long)
         false
       end
 

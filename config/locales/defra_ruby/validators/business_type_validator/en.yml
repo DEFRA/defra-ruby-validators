@@ -2,4 +2,5 @@ en:
   defra_ruby:
     validators:
       BusinessTypeValidator:
-        inclusion: "You must answer this question"
+        business_type:
+          inclusion: "You must answer this question"

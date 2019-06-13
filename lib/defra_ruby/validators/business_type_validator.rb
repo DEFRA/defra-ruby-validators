@@ -5,10 +5,10 @@ module DefraRuby
     class BusinessTypeValidator < BaseValidator
       include CanValidateSelection
 
-      def validate_each(record, attribute, value)
+      def validate_each(record, _attribute, value)
         valid_options = %w[soleTrader limitedCompany partnership limitedLiabilityPartnership localAuthority charity]
 
-        value_is_included?(record, attribute, value, valid_options)
+        value_is_included?(record, :business_type, value, valid_options)
       end
     end
   end
