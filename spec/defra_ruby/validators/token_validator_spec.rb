@@ -14,10 +14,17 @@ module DefraRuby
   module Validators
     RSpec.describe TokenValidator, type: :model do
 
+      valid_token = Helpers::TextGenerator.random_string(24)
       invalid_token = "123456"
 
-      it_behaves_like "a validator"
-      it_behaves_like "a presence validator", TokenValidator, Test::TokenValidatable, :token
+      it_behaves_like("a validator")
+      it_behaves_like(
+        "a presence validator",
+        TokenValidator,
+        Test::TokenValidatable,
+        :token,
+        valid: valid_token
+      )
 
       describe "#validate_each" do
         context "when the token is not valid" do

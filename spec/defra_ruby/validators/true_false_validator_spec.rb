@@ -15,9 +15,16 @@ module DefraRuby
     RSpec.describe TrueFalseValidator do
 
       valid_value = %w[true false].sample
+      invalid_value = "unsure"
 
-      it_behaves_like "a validator"
-      it_behaves_like "a selection validator", TrueFalseValidator, Test::TrueFalseValidatable, :attribute, valid_value
+      it_behaves_like("a validator")
+      it_behaves_like(
+        "a selection validator",
+        TrueFalseValidator,
+        Test::TrueFalseValidatable,
+        :attribute,
+        valid: valid_value, invalid: invalid_value
+      )
     end
   end
 end
