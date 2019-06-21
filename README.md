@@ -66,7 +66,17 @@ This validator checks the value is present and in a format that meets [RFC 2822]
 Add it to your model or form object using
 
 ```ruby
-validates :company_no, "defra_ruby/validators/email": true
+validates :email, "defra_ruby/validators/email": true
+```
+
+### Grid reference
+
+This validator checks the value is present, is in the correct format for an [Ordnance Survey National Grid Reference](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid), and that its valid.
+
+Add it to your model or form object using
+
+```ruby
+validates :grid_reference, "defra_ruby/validators/grid_reference": true
 ```
 
 ### Position
