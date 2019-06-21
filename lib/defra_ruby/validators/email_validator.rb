@@ -8,7 +8,7 @@ module DefraRuby
       include CanValidatePresence
 
       def validate_each(record, attribute, value)
-        return false unless value_is_present?(record, attribute, value)
+        return false unless value_is_present?(record, :email, value)
 
         valid_format?(record, attribute, value)
       end
