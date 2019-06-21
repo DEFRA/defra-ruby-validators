@@ -59,6 +59,16 @@ Add it to your model or form object using
 validates :company_no, "defra_ruby/validators/companies_house_number": true
 ```
 
+### Email
+
+This validator checks the value is present and in a format that meets [RFC 2822](https://tools.ietf.org/html/rfc2822) and [RFC 3696](https://tools.ietf.org/html/rfc3696) (we use [validates_email_format_of](https://github.com/validates-email-format-of/validates_email_format_of) to check the format).
+
+Add it to your model or form object using
+
+```ruby
+validates :company_no, "defra_ruby/validators/email": true
+```
+
 ### Position
 
 This validator checks the value provided for 'position' i.e. someones role or title within an organisation. This is an optional field so the validator has to handle the value being blank. If it's not then it can be no longer than 70 characters and only include letters, spaces, commas, full stops, hyphens and apostrophes else it will return an error.
