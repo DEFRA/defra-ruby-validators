@@ -34,6 +34,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activemodel"
   # Use rest-client for external requests, eg. to Companies House
   spec.add_dependency "rest-client", "~> 2.0"
+  # Use to validate e-mail addresses against RFC 2822 and RFC 3696
+  spec.add_dependency "validates_email_format_of"
 
   spec.add_development_dependency "defra_ruby_style"
   # Shim to load environment variables from a .env file into ENV
