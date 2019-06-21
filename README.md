@@ -80,7 +80,7 @@ validates :email, "defra_ruby/validators/email": true
 
 ### Grid reference
 
-This validator checks the value is present, is in the correct format for an [Ordnance Survey National Grid Reference](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid), and that its valid.
+This validator checks the value is present, is in the correct format for an [Ordnance Survey National Grid Reference](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid), and that its valid (we use [os_map_ref](https://github.com/DEFRA/os-map-ref) to check the coordinate is valid).
 
 Add it to your model or form object using
 
@@ -103,6 +103,16 @@ Add it to your model or form object using
 
 ```ruby
 validates :location, "defra_ruby/validators/location": true
+```
+
+### Phone number
+
+This validator checks the value is present, is not too long (15 is th maximum length for any phone number), and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
+
+Add it to your model or form object using
+
+```ruby
+validates :phone_number, "defra_ruby/validators/phone_number": true
 ```
 
 ### Position
