@@ -1,0 +1,6 @@
+en:
+  defra_ruby:
+    validators:
+      LocationValidator:
+        location:
+          inclusion: "You must answer this question"

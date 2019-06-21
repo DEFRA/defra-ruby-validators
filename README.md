@@ -29,7 +29,16 @@ With this gem installed, a number of active model based validators become availa
 
 ### Business type
 
-This validator checks the value provided is one of our known business types (soleTrader, limitedCompany, partnership, limitedLiabilityPartnership, localAuthority, and charity). If blank or not one of these it will return an error.
+This validator checks the value provided is one of our known business types
+
+- `soleTrader`
+- `limitedCompany`
+- `partnership`
+- `limitedLiabilityPartnership`
+- `localAuthority`
+- `charity`
+
+If blank or not one of these it will return an error.
 
 Add it to your model or form object using
 
@@ -77,6 +86,23 @@ Add it to your model or form object using
 
 ```ruby
 validates :grid_reference, "defra_ruby/validators/grid_reference": true
+```
+
+### Location
+
+This validator checks the value provided is one of our accepted locations
+
+- `england`
+- `northern_ireland`
+- `scotland`
+- `wales`
+
+If blank or not one of these it will return an error.
+
+Add it to your model or form object using
+
+```ruby
+validates :location, "defra_ruby/validators/location": true
 ```
 
 ### Position
