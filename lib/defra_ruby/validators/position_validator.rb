@@ -8,10 +8,10 @@ module DefraRuby
 
       MAX_LENGTH = 70
 
-      def validate_each(record, attribute, value)
+      def validate_each(record, _attribute, value)
         # Position is an optional field so its immediately valid if it's blank
         return true if value.blank?
-        return false unless value_has_no_invalid_characters?(record, attribute, value)
+        return false unless value_has_no_invalid_characters?(record, :position, value)
 
         value_is_not_too_long?(record, :position, value, MAX_LENGTH)
         value_has_no_invalid_characters?(record, :position, value)
