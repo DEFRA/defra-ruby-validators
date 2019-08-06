@@ -1,5 +1,29 @@
 # Change Log
 
+## [v1.2.0](https://github.com/DEFRA/defra-ruby-validators/tree/v1.2.0) (2019-08-06)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.1.0...v1.2.0)
+
+**Implemented enhancements:**
+
+- Enable the gem to use custom validation error messages [\#33](https://github.com/DEFRA/defra-ruby-validators/pull/33) ([irisfaraway](https://github.com/irisfaraway))
+- Add phone number validator [\#32](https://github.com/DEFRA/defra-ruby-validators/pull/32) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add location validator [\#30](https://github.com/DEFRA/defra-ruby-validators/pull/30) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add grid reference validator [\#29](https://github.com/DEFRA/defra-ruby-validators/pull/29) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add email validator [\#27](https://github.com/DEFRA/defra-ruby-validators/pull/27) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add token validator [\#20](https://github.com/DEFRA/defra-ruby-validators/pull/20) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add BusinessTypeValidator [\#19](https://github.com/DEFRA/defra-ruby-validators/pull/19) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Merged pull requests:**
+
+- Ensure we define attributes in concern methods [\#31](https://github.com/DEFRA/defra-ruby-validators/pull/31) ([Cruikshanks](https://github.com/Cruikshanks))
+- Update VCR cassettes [\#28](https://github.com/DEFRA/defra-ruby-validators/pull/28) ([Cruikshanks](https://github.com/Cruikshanks))
+- Remove dev dependency rubocop [\#26](https://github.com/DEFRA/defra-ruby-validators/pull/26) ([Cruikshanks](https://github.com/Cruikshanks))
+- Ensure all validators & concerns validate [\#25](https://github.com/DEFRA/defra-ruby-validators/pull/25) ([Cruikshanks](https://github.com/Cruikshanks))
+- Always use an attribute in validations [\#24](https://github.com/DEFRA/defra-ruby-validators/pull/24) ([Cruikshanks](https://github.com/Cruikshanks))
+- Remove dependency on activesupport [\#23](https://github.com/DEFRA/defra-ruby-validators/pull/23) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add Hakiri badge to README [\#22](https://github.com/DEFRA/defra-ruby-validators/pull/22) ([Cruikshanks](https://github.com/Cruikshanks))
+- Add position validator plus chars & length concern [\#21](https://github.com/DEFRA/defra-ruby-validators/pull/21) ([Cruikshanks](https://github.com/Cruikshanks))
+
 ## [v1.1.0](https://github.com/DEFRA/defra-ruby-validators/tree/v1.1.0) (2019-06-05)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.0.0...v1.1.0)
 
