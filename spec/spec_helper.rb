@@ -6,6 +6,10 @@ require "bundler/setup"
 # This is as per its docs https://github.com/colszowka/simplecov#getting-started
 require "./spec/support/simplecov"
 
+# Load env vars from a text file. This must be done before we load the other
+# support files as some of them rely on the env vars being set.
+require "dotenv/load"
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
