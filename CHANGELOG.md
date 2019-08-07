@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.2.1](https://github.com/DEFRA/defra-ruby-validators/tree/v1.2.1) (2019-08-07)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.2.0...v1.2.1)
+
+**Fixed bugs:**
+
+- TrueFalseValidator uses correct attribute [\#34](https://github.com/DEFRA/defra-ruby-validators/pull/34) ([irisfaraway](https://github.com/irisfaraway))
+
 ## [v1.2.0](https://github.com/DEFRA/defra-ruby-validators/tree/v1.2.0) (2019-08-06)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.1.0...v1.2.0)
 
