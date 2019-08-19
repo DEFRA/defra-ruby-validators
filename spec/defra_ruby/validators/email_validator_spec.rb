@@ -33,7 +33,11 @@ module DefraRuby
 
             error_message = Helpers::Translator.error_message(EmailValidator, :email, :invalid_format)
 
-            it_behaves_like "an invalid record", validatable, :email, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :email,
+                            error: :invalid_format,
+                            error_message: error_message
           end
         end
       end

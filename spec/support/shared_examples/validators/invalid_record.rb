@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples "an invalid record" do |validatable, attribute, error_message|
+RSpec.shared_examples "an invalid record" do |validatable:, attribute:, error:, error_message:|
   it "confirms the object is invalid" do
     expect(validatable).to_not be_valid
   end
@@ -16,9 +16,10 @@ RSpec.shared_examples "an invalid record" do |validatable, attribute, error_mess
     expect(validatable.errors[attribute]).to eq([error_message])
   end
 
-  context "when there is a custom error message" do
+  context "when there are custom error messages" do
     let(:custom_message) { "something is wrong (in a customised way)" }
-    before { allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return(message: custom_message) }
+    let(:messages) { { error => custom_message } }
+    before { allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return(messages: messages) }
 
     it "uses the custom message instead of the default" do
       validatable.valid?

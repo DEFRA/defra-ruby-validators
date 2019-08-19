@@ -32,7 +32,11 @@ module DefraRuby
             validatable = Test::TokenValidatable.new(invalid_token)
             error_message = Helpers::Translator.error_message(TokenValidator, :token, :invalid_format)
 
-            it_behaves_like "an invalid record", validatable, :token, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :token,
+                            error: :invalid_format,
+                            error_message: error_message
           end
         end
       end

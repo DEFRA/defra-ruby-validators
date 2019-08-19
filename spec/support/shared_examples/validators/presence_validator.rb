@@ -18,7 +18,11 @@ RSpec.shared_examples "a presence validator" do |validator, validatable_class, a
         validatable = validatable_class.new
         error_message = Helpers::Translator.error_message(validator, attribute, :blank)
 
-        it_behaves_like "an invalid record", validatable, attribute, error_message
+        it_behaves_like "an invalid record",
+                        validatable: validatable,
+                        attribute: attribute,
+                        error: :blank,
+                        error_message: error_message
       end
     end
   end

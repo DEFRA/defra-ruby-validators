@@ -18,14 +18,22 @@ RSpec.shared_examples "a selection validator" do |validator, validatable_class, 
         validatable = validatable_class.new
         error_message = Helpers::Translator.error_message(validator, attribute, :inclusion)
 
-        it_behaves_like "an invalid record", validatable, attribute, error_message
+        it_behaves_like "an invalid record",
+                        validatable: validatable,
+                        attribute: attribute,
+                        error: :inclusion,
+                        error_message: error_message
       end
 
       context "because the #{attribute} is not from an approved list" do
         validatable = validatable_class.new(values[:invalid])
         error_message = Helpers::Translator.error_message(validator, attribute, :inclusion)
 
-        it_behaves_like "an invalid record", validatable, attribute, error_message
+        it_behaves_like "an invalid record",
+                        validatable: validatable,
+                        attribute: attribute,
+                        error: :inclusion,
+                        error_message: error_message
       end
     end
   end

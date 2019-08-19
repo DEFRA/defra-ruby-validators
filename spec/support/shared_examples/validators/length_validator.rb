@@ -18,7 +18,11 @@ RSpec.shared_examples "a length validator" do |validator, validatable_class, att
         validatable = validatable_class.new(values[:invalid])
         error_message = Helpers::Translator.error_message(validator, attribute, :too_long)
 
-        it_behaves_like "an invalid record", validatable, attribute, error_message
+        it_behaves_like "an invalid record",
+                        validatable: validatable,
+                        attribute: attribute,
+                        error: :too_long,
+                        error_message: error_message
       end
     end
   end
