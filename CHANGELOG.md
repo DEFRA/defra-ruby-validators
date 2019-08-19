@@ -1,5 +1,16 @@
 # Change Log
 
+## [v2.0.0](https://github.com/DEFRA/defra-ruby-validators/tree/v2.0.0) (2019-08-19)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.2.1...v2.0.0)
+
+**Implemented enhancements:**
+
+- Enable gem to receive multiple custom error messages [\#35](https://github.com/DEFRA/defra-ruby-validators/pull/35) ([irisfaraway](https://github.com/irisfaraway))
+
+**Merged pull requests:**
+
+- Standardise invalid format errors [\#36](https://github.com/DEFRA/defra-ruby-validators/pull/36) ([irisfaraway](https://github.com/irisfaraway))
+
 ## [v1.2.1](https://github.com/DEFRA/defra-ruby-validators/tree/v1.2.1) (2019-08-07)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.2.0...v1.2.1)
 
