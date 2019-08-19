@@ -18,7 +18,11 @@ RSpec.shared_examples "a characters validator" do |validator, validatable_class,
         validatable = validatable_class.new(values[:invalid])
         error_message = Helpers::Translator.error_message(validator, attribute, :invalid)
 
-        it_behaves_like "an invalid record", validatable, attribute, error_message
+        it_behaves_like "an invalid record",
+                        validatable: validatable,
+                        attribute: attribute,
+                        error: :invalid,
+                        error_message: error_message
       end
     end
   end

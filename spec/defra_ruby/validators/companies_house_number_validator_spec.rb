@@ -43,7 +43,11 @@ module DefraRuby
               :blank
             )
 
-            it_behaves_like "an invalid record", validatable, :company_no, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :blank,
+                            error_message: error_message
           end
 
           context "because the format is wrong" do
@@ -54,7 +58,11 @@ module DefraRuby
               :invalid
             )
 
-            it_behaves_like "an invalid record", validatable, :company_no, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :invalid,
+                            error_message: error_message
           end
 
           context "because it's not found on companies house" do
@@ -69,7 +77,11 @@ module DefraRuby
               :not_found
             )
 
-            it_behaves_like "an invalid record", validatable, :company_no, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :not_found,
+                            error_message: error_message
           end
 
           context "because it's not 'active' on companies house" do
@@ -84,7 +96,11 @@ module DefraRuby
               :inactive
             )
 
-            it_behaves_like "an invalid record", validatable, :company_no, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :inactive,
+                            error_message: error_message
           end
         end
 
@@ -100,7 +116,11 @@ module DefraRuby
             :error
           )
 
-          it_behaves_like "an invalid record", validatable, :company_no, error_message
+          it_behaves_like "an invalid record",
+                          validatable: validatable,
+                          attribute: :company_no,
+                          error: :error,
+                          error_message: error_message
         end
       end
     end

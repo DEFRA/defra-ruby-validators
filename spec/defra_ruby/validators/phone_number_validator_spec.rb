@@ -46,7 +46,11 @@ module DefraRuby
             validatable = Test::PhoneNumberValidatable.new(invalid_number)
             error_message = Helpers::Translator.error_message(PhoneNumberValidator, :phone_number, :invalid_format)
 
-            it_behaves_like "an invalid record", validatable, :phone_number, error_message
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :phone_number,
+                            error: :invalid_format,
+                            error_message: error_message
           end
         end
       end
