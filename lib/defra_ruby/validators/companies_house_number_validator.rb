@@ -32,7 +32,7 @@ module DefraRuby
       def format_is_valid?(record, attribute, value)
         return true if value.match?(VALID_COMPANIES_HOUSE_REGISTRATION_NUMBER_REGEX)
 
-        record.errors[attribute] << error_message(:company_no, :invalid)
+        record.errors[attribute] << error_message(:company_no, :invalid_format)
         false
       end
 

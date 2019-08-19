@@ -55,13 +55,13 @@ module DefraRuby
             error_message = Helpers::Translator.error_message(
               CompaniesHouseNumberValidator,
               :company_no,
-              :invalid
+              :invalid_format
             )
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
                             attribute: :company_no,
-                            error: :invalid,
+                            error: :invalid_format,
                             error_message: error_message
           end
 
