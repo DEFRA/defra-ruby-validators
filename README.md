@@ -145,6 +145,16 @@ Add it to your model or form object using
 validates :is_a_farmer, "defra_ruby/validators/true_false": true
 ```
 
+## Adding custom error messages
+
+All the validators in this gem have built-in error messages. But if you want, you can provide your own custom message in the app, like this:
+
+```ruby
+validates :position, "defra_ruby/validators/position": { messages: { too_long: "This position is too long" } }
+```
+
+You will need to know the error symbol raised by the validator (eg `too_long` or `invalid_format`).
+
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
