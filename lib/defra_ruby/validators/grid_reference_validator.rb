@@ -22,7 +22,7 @@ module DefraRuby
       def valid_format?(record, attribute, value)
         return true if value.match?(/\A#{grid_reference_pattern}\z/)
 
-        record.errors[attribute] << error_message(:grid_reference, :wrong_format)
+        record.errors[attribute] << error_message(:grid_reference, :invalid_format)
         false
       end
 
