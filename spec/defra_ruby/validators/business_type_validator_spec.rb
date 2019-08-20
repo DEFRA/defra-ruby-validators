@@ -25,6 +25,32 @@ module DefraRuby
         :business_type,
         valid: valid_type, invalid: invalid_type
       )
+
+      context "when the value is overseas" do
+        validatable = Test::BusinessTypeValidatable.new("overseas")
+
+        context "when overseas_allowed is enabled" do
+          before do
+            allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return(allow_overseas: true)
+          end
+
+          it_behaves_like "a valid record", validatable
+        end
+
+        context "when overseas_allowed is not enabled" do
+          before do
+            allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return({})
+          end
+
+          error_message = Helpers::Translator.error_message(BusinessTypeValidator, :business_type, :inclusion)
+
+          it_behaves_like "an invalid record",
+                          validatable: validatable,
+                          attribute: :business_type,
+                          error: :inclusion,
+                          error_message: error_message
+        end
+      end
     end
   end
 end

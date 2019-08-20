@@ -46,6 +46,12 @@ Add it to your model or form object using
 validates :business_type, "defra_ruby/validators/business_type": true
 ```
 
+If you want to include `overseas` in the accepted business types, you can enable this in the options:
+
+```ruby
+validates :business_type, "defra_ruby/validators/business_type": { allow_overseas: true }
+```
+
 ### Companies House number
 
 This validator checks the company registration number provided. Specifically it first checks that it matches a known format. All registration numbers are 8 characters long but can be formatted in the following ways.
