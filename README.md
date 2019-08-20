@@ -111,6 +111,12 @@ Add it to your model or form object using
 validates :location, "defra_ruby/validators/location": true
 ```
 
+If you want to include `overseas` in the accepted locations, you can enable this in the options:
+
+ ```ruby
+validates :location, "defra_ruby/validators/location": { allow_overseas: true }
+```
+
 ### Phone number
 
 This validator checks the value is present, is not too long (15 is th maximum length for any phone number), and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
