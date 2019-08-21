@@ -1,5 +1,18 @@
 # Change Log
 
+## [v2.1.0](https://github.com/DEFRA/defra-ruby-validators/tree/v2.1.0) (2019-08-21)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.0.0...v2.1.0)
+
+**Implemented enhancements:**
+
+- Add option to validate 'overseas' as location [\#40](https://github.com/DEFRA/defra-ruby-validators/pull/40) ([irisfaraway](https://github.com/irisfaraway))
+- Add option to validate 'overseas' as business type [\#38](https://github.com/DEFRA/defra-ruby-validators/pull/38) ([irisfaraway](https://github.com/irisfaraway))
+
+**Merged pull requests:**
+
+- Update VCR cassettes [\#39](https://github.com/DEFRA/defra-ruby-validators/pull/39) ([irisfaraway](https://github.com/irisfaraway))
+- Add guidance on custom error messages to README [\#37](https://github.com/DEFRA/defra-ruby-validators/pull/37) ([irisfaraway](https://github.com/irisfaraway))
+
 ## [v2.0.0](https://github.com/DEFRA/defra-ruby-validators/tree/v2.0.0) (2019-08-19)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v1.2.1...v2.0.0)
 
