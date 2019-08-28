@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.1.1](https://github.com/DEFRA/defra-ruby-validators/tree/v2.1.1) (2019-08-28)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.1.0...v2.1.1)
+
+**Fixed bugs:**
+
+- Use attribute correct name during validation [\#41](https://github.com/DEFRA/defra-ruby-validators/pull/41) ([cintamani](https://github.com/cintamani))
+
 ## [v2.1.0](https://github.com/DEFRA/defra-ruby-validators/tree/v2.1.0) (2019-08-21)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.0.0...v2.1.0)
 
