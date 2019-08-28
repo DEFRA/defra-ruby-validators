@@ -11,8 +11,8 @@ module DefraRuby
       MAX_LENGTH = 15
 
       def validate_each(record, attribute, value)
-        return false unless value_is_present?(record, :phone_number, value)
-        return false unless value_is_not_too_long?(record, :phone_number, value, MAX_LENGTH)
+        return false unless value_is_present?(record, attribute, value)
+        return false unless value_is_not_too_long?(record, attribute, value, MAX_LENGTH)
 
         valid_format?(record, attribute, value)
       end
