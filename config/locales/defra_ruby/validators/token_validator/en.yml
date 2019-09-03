@@ -2,6 +2,5 @@ en:
   defra_ruby:
     validators:
       TokenValidator:
-        token:
-          invalid_format: "The token is not valid"
-          blank: "The token is missing"
+        invalid_format: "The token is not valid"
+        blank: "The token is missing"

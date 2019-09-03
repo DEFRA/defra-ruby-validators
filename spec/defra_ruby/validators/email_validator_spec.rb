@@ -31,7 +31,7 @@ module DefraRuby
           context "because the email is not correctly formatted" do
             validatable = Test::EmailValidatable.new(invalid_email)
 
-            error_message = Helpers::Translator.error_message(EmailValidator, :email, :invalid_format)
+            error_message = Helpers::Translator.error_message(EmailValidator, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,

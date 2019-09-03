@@ -31,7 +31,7 @@ module DefraRuby
         context "when the grid reference is not valid" do
           context "because the grid reference is not correctly formatted" do
             validatable = Test::GridReferenceValidatable.new(invalid_grid_reference)
-            error_message = Helpers::Translator.error_message(GridReferenceValidator, :grid_reference, :invalid_format)
+            error_message = Helpers::Translator.error_message(GridReferenceValidator, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -42,7 +42,7 @@ module DefraRuby
 
           context "because the grid reference is not a coordinate" do
             validatable = Test::GridReferenceValidatable.new(non_coordinate_grid_reference)
-            error_message = Helpers::Translator.error_message(GridReferenceValidator, :grid_reference, :invalid)
+            error_message = Helpers::Translator.error_message(GridReferenceValidator, :invalid)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,

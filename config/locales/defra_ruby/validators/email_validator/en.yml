@@ -2,6 +2,5 @@ en:
   defra_ruby:
     validators:
       EmailValidator:
-        email:
-          blank: "Enter an email address"
-          invalid_format: "Enter a valid email address - there’s a mistake in that one"
+        blank: "Enter an email address"
+        invalid_format: "Enter a valid email address - there’s a mistake in that one"

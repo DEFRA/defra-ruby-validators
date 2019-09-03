@@ -30,7 +30,7 @@ module DefraRuby
         context "when the token is not valid" do
           context "because the token is not correctly formatted" do
             validatable = Test::TokenValidatable.new(invalid_token)
-            error_message = Helpers::Translator.error_message(TokenValidator, :token, :invalid_format)
+            error_message = Helpers::Translator.error_message(TokenValidator, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
