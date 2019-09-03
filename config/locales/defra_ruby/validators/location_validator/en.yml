@@ -2,5 +2,5 @@ en:
   defra_ruby:
     validators:
       LocationValidator:
-        location:
+        attribute:
           inclusion: "You must answer this question"

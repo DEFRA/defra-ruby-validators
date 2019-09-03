@@ -44,7 +44,7 @@ module DefraRuby
         context "when the phone number is not valid" do
           context "because the phone number is not correctly formatted" do
             validatable = Test::PhoneNumberValidatable.new(invalid_number)
-            error_message = Helpers::Translator.error_message(PhoneNumberValidator, :phone_number, :invalid_format)
+            error_message = Helpers::Translator.error_message(PhoneNumberValidator, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,

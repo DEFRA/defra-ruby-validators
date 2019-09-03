@@ -2,7 +2,7 @@ en:
   defra_ruby:
     validators:
       GridReferenceValidator:
-        grid_reference:
+        attribute:
           blank: Enter a grid reference
           invalid_format: The grid reference should have 2 letters and 10 digits
           invalid: The grid reference is not a valid coordinate

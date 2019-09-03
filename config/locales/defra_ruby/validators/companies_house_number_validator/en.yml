@@ -2,7 +2,7 @@ en:
   defra_ruby:
     validators:
       CompaniesHouseNumberValidator:
-        company_no:
+        attribute:
           blank: Enter a company registration number
           invalid_format: "Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits, or 2 letters followed by 5 digits and another letter. If your number has only 7 digits, enter it with a zero at the start."
           not_found: Companies House couldn't find a company with this number

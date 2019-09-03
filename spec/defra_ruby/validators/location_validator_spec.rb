@@ -42,7 +42,7 @@ module DefraRuby
             allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return({})
           end
 
-          error_message = Helpers::Translator.error_message(LocationValidator, :location, :inclusion)
+          error_message = Helpers::Translator.error_message(LocationValidator, :inclusion)
 
           it_behaves_like "an invalid record",
                           validatable: validatable,

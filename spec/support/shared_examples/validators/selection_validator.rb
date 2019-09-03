@@ -16,7 +16,7 @@ RSpec.shared_examples "a selection validator" do |validator, validatable_class, 
     context "when the #{attribute} is not valid" do
       context "because the #{attribute} is not present" do
         validatable = validatable_class.new
-        error_message = Helpers::Translator.error_message(validator, attribute, :inclusion)
+        error_message = Helpers::Translator.error_message(validator, :inclusion)
 
         it_behaves_like "an invalid record",
                         validatable: validatable,
@@ -27,7 +27,7 @@ RSpec.shared_examples "a selection validator" do |validator, validatable_class, 
 
       context "because the #{attribute} is not from an approved list" do
         validatable = validatable_class.new(values[:invalid])
-        error_message = Helpers::Translator.error_message(validator, attribute, :inclusion)
+        error_message = Helpers::Translator.error_message(validator, :inclusion)
 
         it_behaves_like "an invalid record",
                         validatable: validatable,

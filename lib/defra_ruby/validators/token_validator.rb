@@ -19,7 +19,7 @@ module DefraRuby
         # 24-character unique tokens
         return true if value.length == 24
 
-        record.errors[attribute] << error_message(:token, :invalid_format)
+        record.errors[attribute] << error_message(:attribute, :invalid_format)
         false
       end
     end

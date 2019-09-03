@@ -9,7 +9,7 @@ module DefraRuby
       def value_is_included?(record, attribute, value, valid_options)
         return true if value.present? && valid_options.include?(value)
 
-        record.errors[attribute] << error_message(attribute, :inclusion)
+        record.errors[attribute] << error_message(:attribute, :inclusion)
         false
       end
 
