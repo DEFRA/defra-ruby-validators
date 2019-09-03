@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.1.2](https://github.com/DEFRA/defra-ruby-validators/tree/v2.1.2) (2019-09-03)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.1.1...v2.1.2)
+
+**Fixed bugs:**
+
+- Make error messages attribute agnostic [\#42](https://github.com/DEFRA/defra-ruby-validators/pull/42) ([irisfaraway](https://github.com/irisfaraway))
+
 ## [v2.1.1](https://github.com/DEFRA/defra-ruby-validators/tree/v2.1.1) (2019-08-28)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.1.0...v2.1.1)
 
