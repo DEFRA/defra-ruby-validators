@@ -6,11 +6,11 @@ module DefraRuby
 
       protected
 
-      def error_message(attribute, error)
+      def error_message(error)
         if options[:messages] && options[:messages][error]
           options[:messages][error]
         else
-          I18n.t("defra_ruby.validators.#{class_name}.#{attribute}.#{error}")
+          I18n.t("defra_ruby.validators.#{class_name}.#{error}")
         end
       end
 

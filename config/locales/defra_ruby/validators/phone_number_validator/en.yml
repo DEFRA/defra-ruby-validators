@@ -2,7 +2,6 @@ en:
   defra_ruby:
     validators:
       PhoneNumberValidator:
-        attribute:
-          blank: "Enter a telephone number"
-          invalid_format: "Enter a valid telephone number"
-          too_long: "Check the number you entered - it should have no more than than 15 characters"
+        blank: "Enter a telephone number"
+        invalid_format: "Enter a valid telephone number"
+        too_long: "Check the number you entered - it should have no more than than 15 characters"

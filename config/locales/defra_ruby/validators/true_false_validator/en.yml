@@ -2,5 +2,4 @@ en:
   defra_ruby:
     validators:
       TrueFalseValidator:
-        attribute:
-          inclusion: "You must answer this question"
+        inclusion: "You must answer this question"
