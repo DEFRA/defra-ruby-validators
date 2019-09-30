@@ -6,7 +6,7 @@ module DefraRuby
       include CanValidateSelection
 
       def validate_each(record, attribute, value)
-        valid_options = %w[true false]
+        valid_options = [true, false]
 
         value_is_included?(record, attribute, value, valid_options)
       end

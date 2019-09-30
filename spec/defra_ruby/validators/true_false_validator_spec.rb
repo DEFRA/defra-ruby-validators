@@ -14,7 +14,7 @@ module DefraRuby
   module Validators
     RSpec.describe TrueFalseValidator do
 
-      valid_value = %w[true false].sample
+      valid_value = [true, false].sample
       invalid_value = "unsure"
 
       it_behaves_like("a validator")
