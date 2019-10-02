@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.2.0](https://github.com/DEFRA/defra-ruby-validators/tree/v2.2.0) (2019-10-02)
+[Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.1.2...v2.2.0)
+
+**Implemented enhancements:**
+
+- Change true false validator to match true and false objects [\#43](https://github.com/DEFRA/defra-ruby-validators/pull/43) ([cintamani](https://github.com/cintamani))
+
 ## [v2.1.2](https://github.com/DEFRA/defra-ruby-validators/tree/v2.1.2) (2019-09-03)
 [Full Changelog](https://github.com/DEFRA/defra-ruby-validators/compare/v2.1.1...v2.1.2)
 
@@ -82,7 +89,6 @@
 
 **Merged pull requests:**
 
-- Update RELEASING and reset rubygems API key [\#17](https://github.com/DEFRA/defra-ruby-validators/pull/17) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update README with true or false details [\#16](https://github.com/DEFRA/defra-ruby-validators/pull/16) ([Cruikshanks](https://github.com/Cruikshanks))
 - Make attribute optional in error message [\#14](https://github.com/DEFRA/defra-ruby-validators/pull/14) ([Cruikshanks](https://github.com/Cruikshanks))
 
@@ -99,6 +105,7 @@
 
 **Merged pull requests:**
 
+- Update RELEASING and reset rubygems API key [\#17](https://github.com/DEFRA/defra-ruby-validators/pull/17) ([Cruikshanks](https://github.com/Cruikshanks))
 - Refactor Companies House Validator unit tests [\#13](https://github.com/DEFRA/defra-ruby-validators/pull/13) ([Cruikshanks](https://github.com/Cruikshanks))
 - Add use of attribute to error message [\#12](https://github.com/DEFRA/defra-ruby-validators/pull/12) ([Cruikshanks](https://github.com/Cruikshanks))
 - Remove companies house number help text [\#11](https://github.com/DEFRA/defra-ruby-validators/pull/11) ([Cruikshanks](https://github.com/Cruikshanks))
