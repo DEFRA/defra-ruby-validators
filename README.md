@@ -1,4 +1,4 @@
-<img src="/defra-ruby-validators.png" alt="Defra ruby validators logo" />
+# Defra Ruby Validators
 
 [![Build Status](https://travis-ci.com/DEFRA/defra-ruby-validators.svg?branch=master)](https://travis-ci.com/DEFRA/defra-ruby-validators)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a0f8611f1a879786f642/maintainability)](https://codeclimate.com/github/DEFRA/defra-ruby-validators/maintainability)
