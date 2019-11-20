@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.4.2p198
+      - rest-client/2.1.0 (darwin19.0.0 x86_64) ruby/2.4.2p198
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Host:
@@ -23,7 +23,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Mon, 30 Sep 2019 13:21:55 GMT
+      - Tue, 19 Nov 2019 22:35:56 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,16 +49,16 @@ http_interactions:
       X-Ratelimit-Limit:
       - '600'
       X-Ratelimit-Remain:
-      - '598'
+      - '599'
       X-Ratelimit-Reset:
-      - '1569850005'
+      - '1574203256'
       X-Ratelimit-Window:
       - 5m
       Server:
       - CompaniesHouse
     body:
       encoding: UTF-8
-      string: '{"errors":[{"error":"company-profile-not-found","type":"ch:service"}]}'
+      string: '{"errors":[{"type":"ch:service","error":"company-profile-not-found"}]}'
     http_version: 
-  recorded_at: Mon, 30 Sep 2019 13:21:54 GMT
+  recorded_at: Tue, 19 Nov 2019 22:35:50 GMT
 recorded_with: VCR 4.0.0
