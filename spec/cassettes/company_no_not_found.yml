@@ -23,7 +23,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 29 Jan 2020 13:39:21 GMT
+      - Tue, 18 Feb 2020 14:22:19 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,9 +49,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '600'
       X-Ratelimit-Remain:
-      - '597'
+      - '594'
       X-Ratelimit-Reset:
-      - '1580305461'
+      - '1582035975'
       X-Ratelimit-Window:
       - 5m
       Server:
@@ -60,5 +60,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"errors":[{"type":"ch:service","error":"company-profile-not-found"}]}'
     http_version: 
-  recorded_at: Wed, 29 Jan 2020 13:39:21 GMT
+  recorded_at: Tue, 18 Feb 2020 14:22:19 GMT
 recorded_with: VCR 4.0.0
