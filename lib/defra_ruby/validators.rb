@@ -21,6 +21,7 @@ require_relative "validators/phone_number_validator"
 require_relative "validators/position_validator"
 require_relative "validators/token_validator"
 require_relative "validators/true_false_validator"
+require_relative "validators/past_date_validator"
 
 module DefraRuby
   module Validators

@@ -1,0 +1,5 @@
+en:
+  defra_ruby:
+    validators:
+      PastDateValidator:
+        past_date: "Date cannot be in the future"
