@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.3.1](https://github.com/defra/defra-ruby-validators/tree/v2.3.1) (2020-02-19)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.3.0...v2.3.1)
+
+**Implemented enhancements:**
+
+- Restrict dates to be greater or equal to year 1900 [\#53](https://github.com/DEFRA/defra-ruby-validators/pull/53) ([cintamani](https://github.com/cintamani))
+
 ## [v2.3.0](https://github.com/defra/defra-ruby-validators/tree/v2.3.0) (2020-02-18)
 
 [Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.2.0...v2.3.0)
