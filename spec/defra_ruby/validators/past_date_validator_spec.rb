@@ -15,14 +15,21 @@ module DefraRuby
     RSpec.describe PastDateValidator, type: :model do
 
       valid_date = Date.today
-      invalid_date = Date.today + 1
+      future_date = Date.today + 1
+      invalid_date = Date.new(20, 2, 2)
 
       it_behaves_like "a valid record", Test::PastDateValidatable.new(valid_date)
       it_behaves_like "an invalid record",
-                      validatable: Test::PastDateValidatable.new(invalid_date),
+                      validatable: Test::PastDateValidatable.new(future_date),
                       attribute: :date,
                       error: :past_date,
                       error_message: Helpers::Translator.error_message(PastDateValidator, :past_date)
+
+      it_behaves_like "an invalid record",
+                      validatable: Test::PastDateValidatable.new(invalid_date),
+                      attribute: :date,
+                      error: :invalid_date,
+                      error_message: Helpers::Translator.error_message(PastDateValidator, :invalid_date)
     end
   end
 end
