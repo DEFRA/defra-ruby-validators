@@ -6,11 +6,21 @@ module DefraRuby
       def validate_each(record, attribute, value)
         return false if value.blank?
 
-        return true if value.to_date <= Date.today
+        date = value.to_date
 
-        record.errors[attribute] << error_message(:past_date)
+        if date > Date.today
+          record.errors[attribute] << error_message(:past_date)
 
-        false
+          return false
+        end
+
+        if date.year < 1900
+          record.errors[attribute] << error_message(:invalid_date)
+
+          return false
+        end
+
+        true
       end
     end
   end

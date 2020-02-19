@@ -3,3 +3,4 @@ en:
     validators:
       PastDateValidator:
         past_date: "Date cannot be in the future"
+        invalid_date: "You must enter a valid date"
