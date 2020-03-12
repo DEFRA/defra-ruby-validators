@@ -1,25 +1,32 @@
-env:
-  global:
-  - CC_TEST_REPORTER_ID=8efeb1a8373dafb8697aac6eea657464f119181de12b081941cbef146aaba209
-  - COMPANIES_HOUSE_API_KEY=secretkey
+dist: trusty
+
+addons:
+  sonarcloud:
+    organization: "defra"
+
 language: ruby
 rvm: 2.4.2
 cache: bundler
+
+# Travis CI uses shallow clone to speed up build times, but a truncated SCM
+# history may cause issues when SonarCloud computes blame data. To avoid this,
+# you can access the full SCM history with `depth: false`
 git:
-  depth: 3
+  depth: false
+
+env:
+  global:
+    - COMPANIES_HOUSE_API_KEY=secretkey
+
 before_install:
-- export TZ=UTC
-- gem install -v 1.17.2 bundler --no-rdoc --no-ri
-before_script:
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-  > ./cc-test-reporter; fi
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build;
-  fi
-- bundle exec rubocop
-after_script:
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code
-  $TRAVIS_TEST_RESULT; fi
+  - export TZ=UTC
+  - gem install -v 1.17.3 bundler --no-rdoc --no-ri
+
+script:
+  - bundle exec rubocop --format=json --out=rubocop-result.json
+  - bundle exec rspec
+  - sonar-scanner
+
 deploy:
   provider: rubygems
   api_key:
