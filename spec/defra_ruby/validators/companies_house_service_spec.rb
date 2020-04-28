@@ -1,13 +1,21 @@
 # frozen_string_literal: true
 
+require "webmock/rspec"
+
 RSpec.describe DefraRuby::Validators::CompaniesHouseService do
   let(:subject) { described_class.new("09360070") }
   let(:host) { "https://api.companieshouse.gov.uk/" }
 
   describe "#status" do
     context "when the company_no is for an active company" do
-      before(:each) { VCR.insert_cassette("company_no_valid") }
-      after(:each) { VCR.eject_cassette }
+      before do
+        expected_body = { "company_status": "active" }
+
+        stub_request(:any, /.*#{host}.*/).to_return(
+          status: 200,
+          body: expected_body.to_json
+        )
+      end
 
       it "returns :active" do
         expect(subject.status).to eq(:active)
@@ -15,9 +23,11 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
     end
 
     context "when the company_no is not found" do
-      let(:subject) { described_class.new("99999999") }
-      before(:each) { VCR.insert_cassette("company_no_not_found") }
-      after(:each) { VCR.eject_cassette }
+      before do
+        stub_request(:any, /.*#{host}.*/).to_return(
+          status: 404
+        )
+      end
 
       it "returns :not_found" do
         expect(subject.status).to eq(:not_found)
@@ -25,9 +35,14 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
     end
 
     context "when the company_no is inactive" do
-      let(:subject) { described_class.new("07281919") }
-      before(:each) { VCR.insert_cassette("company_no_inactive") }
-      after(:each) { VCR.eject_cassette }
+      before do
+        expected_body = { "company_status": "dissolved" }
+
+        stub_request(:any, /.*#{host}.*/).to_return(
+          status: 200,
+          body: expected_body.to_json
+        )
+      end
 
       it "returns :inactive" do
         expect(subject.status).to eq(:inactive)
@@ -35,11 +50,8 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
     end
 
     context "when there is a problem with the Companies House API" do
-      before(:each) { VCR.turn_off! }
-      after(:each) { VCR.turn_on! }
-
       context "and the request times out" do
-        before(:each) { stub_request(:any, /.*#{host}.*/).to_timeout }
+        before { stub_request(:any, /.*#{host}.*/).to_timeout }
 
         it "raises an exception" do
           expect { subject.status }.to raise_error(StandardError)
@@ -47,7 +59,7 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
 
       context "and request returns an error" do
-        before(:each) { stub_request(:any, /.*#{host}.*/).to_raise(SocketError) }
+        before { stub_request(:any, /.*#{host}.*/).to_raise(SocketError) }
 
         it "raises an exception" do
           expect { subject.status }.to raise_error(StandardError)
