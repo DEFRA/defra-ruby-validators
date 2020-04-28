@@ -6,8 +6,8 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
 
   describe "#status" do
     context "when the company_no is for an active company" do
-      before(:each) { VCR.insert_cassette("company_no_valid") }
-      after(:each) { VCR.eject_cassette }
+      # before(:each) { VCR.insert_cassette("company_no_valid") }
+      # after(:each) { VCR.eject_cassette }
 
       it "returns :active" do
         expect(subject.status).to eq(:active)
@@ -16,8 +16,8 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
 
     context "when the company_no is not found" do
       let(:subject) { described_class.new("99999999") }
-      before(:each) { VCR.insert_cassette("company_no_not_found") }
-      after(:each) { VCR.eject_cassette }
+      # before(:each) { VCR.insert_cassette("company_no_not_found") }
+      # after(:each) { VCR.eject_cassette }
 
       it "returns :not_found" do
         expect(subject.status).to eq(:not_found)
@@ -26,8 +26,8 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
 
     context "when the company_no is inactive" do
       let(:subject) { described_class.new("07281919") }
-      before(:each) { VCR.insert_cassette("company_no_inactive") }
-      after(:each) { VCR.eject_cassette }
+      # before(:each) { VCR.insert_cassette("company_no_inactive") }
+      # after(:each) { VCR.eject_cassette }
 
       it "returns :inactive" do
         expect(subject.status).to eq(:inactive)
@@ -35,9 +35,6 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
     end
 
     context "when there is a problem with the Companies House API" do
-      before(:each) { VCR.turn_off! }
-      after(:each) { VCR.turn_on! }
-
       context "and the request times out" do
         before(:each) { stub_request(:any, /.*#{host}.*/).to_timeout }
 
