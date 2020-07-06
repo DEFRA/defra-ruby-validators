@@ -10,7 +10,7 @@ module DefraRuby
         # Name fields must contain only letters, spaces, commas, full stops, hyphens and apostrophes
         return true if value.match?(/\A[-a-z\s,.']+\z/i)
 
-        record.errors[attribute] << error_message(:invalid_format)
+        add_validation_error(record, attribute, :invalid_format)
         false
       end
 

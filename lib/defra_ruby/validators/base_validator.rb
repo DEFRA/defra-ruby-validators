@@ -6,6 +6,12 @@ module DefraRuby
 
       protected
 
+      def add_validation_error(record, attribute, error)
+        record.errors.add(attribute,
+                          error,
+                          message: error_message(error))
+      end
+
       def error_message(error)
         if options[:messages] && options[:messages][error]
           options[:messages][error]

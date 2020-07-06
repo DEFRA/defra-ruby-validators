@@ -19,7 +19,7 @@ module DefraRuby
         # validate_email_format returns nil if the validation passes
         return true unless ValidatesEmailFormatOf.validate_email_format(value)
 
-        record.errors[attribute] << error_message(:invalid_format)
+        add_validation_error(record, attribute, :invalid_format)
         false
       end
 
