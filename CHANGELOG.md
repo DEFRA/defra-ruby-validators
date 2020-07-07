@@ -1,5 +1,18 @@
 # Changelog
 
+## [v2.4.1](https://github.com/defra/defra-ruby-validators/tree/v2.4.1) (2020-07-07)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.3.1...v2.4.1)
+
+**Merged pull requests:**
+
+- Update syntax for adding error messages in Rails 6 [\#59](https://github.com/DEFRA/defra-ruby-validators/pull/59) ([irisfaraway](https://github.com/irisfaraway))
+- Fix issue in travis with bundler args [\#58](https://github.com/DEFRA/defra-ruby-validators/pull/58) ([Cruikshanks](https://github.com/Cruikshanks))
+- Remove VCR and use Webmock instead [\#57](https://github.com/DEFRA/defra-ruby-validators/pull/57) ([irisfaraway](https://github.com/irisfaraway))
+- Use multiple rubocop formats in Travis build [\#56](https://github.com/DEFRA/defra-ruby-validators/pull/56) ([Cruikshanks](https://github.com/Cruikshanks))
+- Switch to SonarCloud from CodeClimate [\#55](https://github.com/DEFRA/defra-ruby-validators/pull/55) ([Cruikshanks](https://github.com/Cruikshanks))
+- Update VCR cassettes [\#54](https://github.com/DEFRA/defra-ruby-validators/pull/54) ([Cruikshanks](https://github.com/Cruikshanks))
+
 ## [v2.3.1](https://github.com/defra/defra-ruby-validators/tree/v2.3.1) (2020-02-19)
 
 [Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.3.0...v2.3.1)
