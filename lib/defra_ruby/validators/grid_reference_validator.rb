@@ -22,7 +22,7 @@ module DefraRuby
       def valid_format?(record, attribute, value)
         return true if value.match?(/\A#{grid_reference_pattern}\z/)
 
-        record.errors[attribute] << error_message(:invalid_format)
+        add_validation_error(record, attribute, :invalid_format)
         false
       end
 
@@ -30,7 +30,7 @@ module DefraRuby
         OsMapRef::Location.for(value).easting
         true
       rescue OsMapRef::Error
-        record.errors[attribute] << error_message(:invalid)
+        add_validation_error(record, attribute, :invalid)
         false
       end
 

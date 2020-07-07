@@ -23,7 +23,7 @@ module DefraRuby
         Phonelib.default_country = "GB"
         return true if Phonelib.valid?(value)
 
-        record.errors[attribute] << error_message(:invalid_format)
+        add_validation_error(record, attribute, :invalid_format)
         false
       end
 

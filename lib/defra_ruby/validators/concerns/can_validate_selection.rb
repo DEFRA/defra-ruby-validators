@@ -10,7 +10,7 @@ module DefraRuby
         # In this case, we do want `false.present?` to return `true` https://github.com/rails/rails/issues/10804
         return true if (value == false || value.present?) && valid_options.include?(value)
 
-        record.errors[attribute] << error_message(:inclusion)
+        add_validation_error(record, attribute, :inclusion)
         false
       end
 
