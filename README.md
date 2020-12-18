@@ -1,6 +1,6 @@
 # Defra Ruby Validators
 
-[![Build Status](https://travis-ci.com/DEFRA/defra-ruby-validators.svg?branch=main)](https://travis-ci.com/DEFRA/defra-ruby-validators)
+![Build Status](https://github.com/DEFRA/defra-ruby-validators/workflows/CI/badge.svg?branch=main)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_defra-ruby-validators&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_defra-ruby-validators)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_defra-ruby-validators&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_defra-ruby-validators)
 [![security](https://hakiri.io/github/DEFRA/defra-ruby-validators/main.svg)](https://hakiri.io/github/DEFRA/defra-ruby-validators/main)
