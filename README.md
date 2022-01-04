@@ -3,7 +3,6 @@
 ![Build Status](https://github.com/DEFRA/defra-ruby-validators/workflows/CI/badge.svg?branch=main)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_defra-ruby-validators&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_defra-ruby-validators)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_defra-ruby-validators&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_defra-ruby-validators)
-[![security](https://hakiri.io/github/DEFRA/defra-ruby-validators/main.svg)](https://hakiri.io/github/DEFRA/defra-ruby-validators/main)
 [![Gem Version](https://badge.fury.io/rb/defra_ruby_validators.svg)](https://badge.fury.io/rb/defra_ruby_validators)
 [![Licence](https://img.shields.io/badge/Licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
 
