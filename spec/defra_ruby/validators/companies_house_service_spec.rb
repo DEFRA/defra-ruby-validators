@@ -3,10 +3,11 @@
 require "webmock/rspec"
 
 RSpec.describe DefraRuby::Validators::CompaniesHouseService do
-  let(:subject) { described_class.new("09360070") }
   let(:host) { "https://api.companieshouse.gov.uk/" }
 
   describe "#status" do
+    let(:subject) { described_class.new("09360070") }
+
     context "when the company_no is for an active company" do
       before do
         expected_body = { "company_status": "active" }
@@ -49,6 +50,33 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
     end
 
+    context "checking the company_type" do
+      let(:subject) { described_class.new("09360070", "llp") }
+
+      context "when the company_no is for a LLP" do
+        before do
+          stub_request(:any, /.*#{host}.*/).to_return(
+            status: 200,
+            body: expected_body.to_json
+          )
+        end
+
+        let(:expected_body) { { "company_status": "active", "type": "llp" } }
+
+        it "returns :active" do
+          expect(subject.status).to eq(:active)
+        end
+
+        context "but a ltd company is found" do
+          let(:expected_body) { { "company_status": "active", "type": "ltd" } }
+
+          it "returns :not_found" do
+            expect(subject.status).to eq(:not_found)
+          end
+        end
+      end
+    end
+
     context "when there is a problem with the Companies House API" do
       context "and the request times out" do
         before { stub_request(:any, /.*#{host}.*/).to_timeout }
@@ -67,4 +95,5 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
     end
   end
+
 end

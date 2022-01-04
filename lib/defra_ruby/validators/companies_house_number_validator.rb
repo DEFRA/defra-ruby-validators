@@ -48,7 +48,6 @@ module DefraRuby
       rescue StandardError
         add_validation_error(record, attribute, :error)
       end
-
     end
   end
 end
