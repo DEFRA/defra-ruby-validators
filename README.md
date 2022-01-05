@@ -73,6 +73,12 @@ Add it to your model or form object using
 validates :company_no, "defra_ruby/validators/companies_house_number": true
 ```
 
+The company number also accepts a `company_type` option. This checks the `type` attribute in the API response. To match validate that the company number is for a Limited Company, for example:
+
+```ruby
+validates :company_no, "defra_ruby/validators/companies_house_number": { company_type: "ltd" }
+```
+
 ### Email
 
 This validator checks the value is present and in a format that meets [RFC 2822](https://tools.ietf.org/html/rfc2822) and [RFC 3696](https://tools.ietf.org/html/rfc3696) (we use [validates_email_format_of](https://github.com/validates-email-format-of/validates_email_format_of) to check the format).

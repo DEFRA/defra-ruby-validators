@@ -8,6 +8,12 @@ module Test
 
     validates :company_no, "defra_ruby/validators/companies_house_number": true
   end
+
+  CompaniesHouseCompanyTypeAndNumberValidatable = Struct.new(:company_no) do
+    include ActiveModel::Validations
+
+    validates :company_no, "defra_ruby/validators/companies_house_number": { company_type: "ltd" }
+  end
 end
 
 module DefraRuby
@@ -85,6 +91,16 @@ module DefraRuby
                             attribute: :company_no,
                             error: :inactive,
                             error_message: error_message
+          end
+
+          context "with a company_type option" do
+            let(:company_no) { valid_numbers.first }
+
+            it "calls the companies house service with the `ltd` param" do
+              expect(CompaniesHouseService).to receive(:new).with(company_no, "ltd")
+
+              Test::CompaniesHouseCompanyTypeAndNumberValidatable.new(company_no).valid?
+            end
           end
         end
 

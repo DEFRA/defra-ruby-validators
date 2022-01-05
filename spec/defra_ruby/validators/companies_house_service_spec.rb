@@ -10,7 +10,7 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
 
     context "when the company_no is for an active company" do
       before do
-        expected_body = { "company_status": "active" }
+        expected_body = { "company_status": "active", "type": "ltd" }
 
         stub_request(:any, /.*#{host}.*/).to_return(
           status: 200,
@@ -37,7 +37,7 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
 
     context "when the company_no is inactive" do
       before do
-        expected_body = { "company_status": "dissolved" }
+        expected_body = { "company_status": "dissolved", "type": "ltd" }
 
         stub_request(:any, /.*#{host}.*/).to_return(
           status: 200,
