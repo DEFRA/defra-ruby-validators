@@ -45,6 +45,9 @@ module DefraRuby
           add_validation_error(record, attribute, :inactive)
         when :not_found
           add_validation_error(record, attribute, :not_found)
+        else
+          # Sonarcloud suggested that not having an `else` is a code smell
+          add_validation_error(record, attribute, :error)
         end
       rescue StandardError
         add_validation_error(record, attribute, :error)
