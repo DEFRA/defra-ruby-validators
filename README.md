@@ -79,6 +79,8 @@ The company number also accepts a `company_type` option. This checks the `type` 
 validates :company_no, "defra_ruby/validators/companies_house_number": { company_type: "ltd" }
 ```
 
+Note: to mock the Companies House service with the `company_type` option, you will need to be running at least v2.2.0 of [defra-ruby-mocks](https://github.com/DEFRA/defra-ruby-mocks#companies-house).
+
 ### Email
 
 This validator checks the value is present and in a format that meets [RFC 2822](https://tools.ietf.org/html/rfc2822) and [RFC 3696](https://tools.ietf.org/html/rfc3696) (we use [validates_email_format_of](https://github.com/validates-email-format-of/validates_email_format_of) to check the format).
