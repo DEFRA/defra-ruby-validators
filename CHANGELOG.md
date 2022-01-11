@@ -1,5 +1,18 @@
 # Changelog
 
+## [v2.5.0](https://github.com/defra/defra-ruby-validators/tree/v2.5.0) (2022-01-11)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.4.1...v2.5.0)
+
+**Implemented enhancements:**
+
+- Validate registration number against Companies House records [\#62](https://github.com/DEFRA/defra-ruby-validators/pull/62) ([tobyprivett](https://github.com/tobyprivett))
+
+**Merged pull requests:**
+
+- Switch from Travis CI to GitHub Actions [\#61](https://github.com/DEFRA/defra-ruby-validators/pull/61) ([irisfaraway](https://github.com/irisfaraway))
+- Create Dependabot config file [\#60](https://github.com/DEFRA/defra-ruby-validators/pull/60) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v2.4.1](https://github.com/defra/defra-ruby-validators/tree/v2.4.1) (2020-07-07)
 
 [Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.3.1...v2.4.1)
