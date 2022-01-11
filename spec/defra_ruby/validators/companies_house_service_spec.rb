@@ -95,5 +95,4 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
     end
   end
-
 end
