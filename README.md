@@ -73,7 +73,7 @@ Add it to your model or form object using
 validates :company_no, "defra_ruby/validators/companies_house_number": true
 ```
 
-The company number also accepts a `company_type` option. This checks the `type` attribute in the API response. To match validate that the company number is for a Limited Company, for example:
+The company number also accepts a `company_type` option. This checks the `type` attribute in the API response. To validate that the company number is for a Limited Company, for example:
 
 ```ruby
 validates :company_no, "defra_ruby/validators/companies_house_number": { company_type: "ltd" }
