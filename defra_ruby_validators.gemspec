@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   # Include ActiveModel so that we have access to ActiveModel::Validations
   # ActiveModel::Validation is the central class within gem!
   spec.add_dependency "activemodel"
+  spec.add_dependency "matrix"
   # Used to validate national grid references
   spec.add_dependency "os_map_ref"
   # Use to ensure phone numbers are in a valid and recognised format
@@ -58,8 +59,8 @@ Gem::Specification.new do |spec|
   # byebug
   spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "simplecov", "~> 0.17.1"
-  spec.add_development_dependency "webmock", "~> 3.4"
+  spec.add_development_dependency "rspec", "~> 3.12"
+  spec.add_development_dependency "simplecov", "~> 0.22.0"
+  spec.add_development_dependency "webmock", "~> 3.18"
 end
 # rubocop:enable Gemspec/RequiredRubyVersion
