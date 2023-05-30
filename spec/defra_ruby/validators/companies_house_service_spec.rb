@@ -6,7 +6,8 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
   let(:host) { "https://api.companieshouse.gov.uk/" }
 
   describe "#status" do
-    let(:subject) { described_class.new("09360070") }
+    let(:company_no) { "09360070" }
+    let(:subject) { described_class.new(company_no) }
 
     context "when the company_no is for an active company" do
       before do
@@ -18,8 +19,25 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
         )
       end
 
-      it "returns :active" do
-        expect(subject.status).to eq(:active)
+      context "for an eight-digit company_no" do
+        let(:company_no) { "19360070" }
+        it "returns :active" do
+          expect(subject.status).to eq(:active)
+        end
+      end
+
+      context "for a seven-digit company_no with a leading zero" do
+        let(:company_no) { "09360070" }
+        it "returns :active" do
+          expect(subject.status).to eq(:active)
+        end
+      end
+
+      context "for a seven-digit company_no without a leading zero" do
+        let(:company_no) { "9360070" }
+        it "returns :active" do
+          expect(subject.status).to eq(:active)
+        end
       end
     end
 

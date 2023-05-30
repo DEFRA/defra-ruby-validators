@@ -63,6 +63,17 @@ module DefraRuby
                             error_message: error_message
           end
 
+          context "because it consists of all zeroes" do
+            validatable = Test::CompaniesHouseNumberValidatable.new("00000000")
+            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :invalid_format)
+
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :invalid_format,
+                            error_message: error_message
+          end
+
           context "because it's not found on companies house" do
             before do
               allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:not_found)
