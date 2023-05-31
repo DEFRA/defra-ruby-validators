@@ -57,6 +57,17 @@ module DefraRuby
                             error_message: error_message
           end
 
+          context "when it is nil" do
+            validatable = Test::CompaniesHouseNumberValidatable.new(nil)
+            error_message = Helpers::Translator.error_message(described_class, :blank)
+
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :blank,
+                            error_message: error_message
+          end
+
           context "when the format is wrong" do
             validatable = Test::CompaniesHouseNumberValidatable.new(invalid_format_number)
             error_message = Helpers::Translator.error_message(described_class, :invalid_format)
