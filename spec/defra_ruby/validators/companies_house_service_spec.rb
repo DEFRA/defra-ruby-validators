@@ -6,12 +6,13 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
   let(:host) { "https://api.companieshouse.gov.uk/" }
 
   describe "#status" do
+    subject(:companies_house_service) { described_class.new(company_no) }
+
     let(:company_no) { "09360070" }
-    let(:subject) { described_class.new(company_no) }
 
     context "when the company_no is for an active company" do
       before do
-        expected_body = { "company_status": "active", "type": "ltd" }
+        expected_body = { company_status: "active", type: "ltd" }
 
         stub_request(:any, /.*#{host}.*/).to_return(
           status: 200,
@@ -19,24 +20,27 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
         )
       end
 
-      context "for an eight-digit company_no" do
+      context "with an eight-digit company_no" do
         let(:company_no) { "19360070" }
+
         it "returns :active" do
-          expect(subject.status).to eq(:active)
+          expect(companies_house_service.status).to eq(:active)
         end
       end
 
-      context "for a seven-digit company_no with a leading zero" do
+      context "with a seven-digit company_no with a leading zero" do
         let(:company_no) { "09360070" }
+
         it "returns :active" do
-          expect(subject.status).to eq(:active)
+          expect(companies_house_service.status).to eq(:active)
         end
       end
 
-      context "for a seven-digit company_no without a leading zero" do
+      context "with a seven-digit company_no without a leading zero" do
         let(:company_no) { "9360070" }
+
         it "returns :active" do
-          expect(subject.status).to eq(:active)
+          expect(companies_house_service.status).to eq(:active)
         end
       end
     end
@@ -49,13 +53,13 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
 
       it "returns :not_found" do
-        expect(subject.status).to eq(:not_found)
+        expect(companies_house_service.status).to eq(:not_found)
       end
     end
 
     context "when the company_no is inactive" do
       before do
-        expected_body = { "company_status": "dissolved", "type": "ltd" }
+        expected_body = { company_status: "dissolved", type: "ltd" }
 
         stub_request(:any, /.*#{host}.*/).to_return(
           status: 200,
@@ -64,12 +68,12 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
 
       it "returns :inactive" do
-        expect(subject.status).to eq(:inactive)
+        expect(companies_house_service.status).to eq(:inactive)
       end
     end
 
-    context "checking the company_type" do
-      let(:subject) { described_class.new("09360070", "llp") }
+    context "when checking the company_type" do
+      let(:companies_house_service) { described_class.new("09360070", "llp") }
 
       context "when the company_no is for a LLP" do
         before do
@@ -79,36 +83,36 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
           )
         end
 
-        let(:expected_body) { { "company_status": "active", "type": "llp" } }
+        let(:expected_body) { { company_status: "active", type: "llp" } }
 
         it "returns :active" do
-          expect(subject.status).to eq(:active)
+          expect(companies_house_service.status).to eq(:active)
         end
 
-        context "but a ltd company is found" do
-          let(:expected_body) { { "company_status": "active", "type": "ltd" } }
+        context "when a ltd company is found" do
+          let(:expected_body) { { company_status: "active", type: "ltd" } }
 
           it "returns :not_found" do
-            expect(subject.status).to eq(:not_found)
+            expect(companies_house_service.status).to eq(:not_found)
           end
         end
       end
     end
 
     context "when there is a problem with the Companies House API" do
-      context "and the request times out" do
+      context "when the request times out" do
         before { stub_request(:any, /.*#{host}.*/).to_timeout }
 
         it "raises an exception" do
-          expect { subject.status }.to raise_error(StandardError)
+          expect { companies_house_service.status }.to raise_error(StandardError)
         end
       end
 
-      context "and request returns an error" do
+      context "when the request returns an error" do
         before { stub_request(:any, /.*#{host}.*/).to_raise(SocketError) }
 
         it "raises an exception" do
-          expect { subject.status }.to raise_error(StandardError)
+          expect { companies_house_service.status }.to raise_error(StandardError)
         end
       end
     end

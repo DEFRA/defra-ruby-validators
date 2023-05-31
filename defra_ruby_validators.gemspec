@@ -1,4 +1,3 @@
-# rubocop:disable Gemspec/RequiredRubyVersion
 # frozen_string_literal: true
 
 $LOAD_PATH.push File.expand_path("lib", __dir__)
@@ -18,7 +17,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.1"
 
   spec.files = Dir["{bin,config,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
-  spec.test_files = Dir["spec/**/*"]
 
   spec.require_paths = ["lib"]
 
@@ -28,12 +26,13 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "https://rubygems.org"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+          "public gem pushes."
   end
 
   # Include ActiveModel so that we have access to ActiveModel::Validations
   # ActiveModel::Validation is the central class within gem!
   spec.add_dependency "activemodel"
+  spec.add_dependency "i18n"
   spec.add_dependency "matrix"
   # Used to validate national grid references
   spec.add_dependency "os_map_ref"
@@ -43,25 +42,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rest-client", "~> 2.0"
   # Use to validate e-mail addresses against RFC 2822 and RFC 3696
   spec.add_dependency "validates_email_format_of"
-
-  spec.add_development_dependency "defra_ruby_style"
-  # Shim to load environment variables from a .env file into ENV
-  spec.add_development_dependency "dotenv"
-  # Allows us to automatically generate the change log from the tags, issues,
-  # labels and pull requests on GitHub. Added as a dependency so all dev's have
-  # access to it to generate a log, and so they are using the same version.
-  # New dev's should first create GitHub personal app token and add it to their
-  # ~/.bash_profile (or equivalent)
-  # https://github.com/skywinder/github-changelog-generator#github-token
-  spec.add_development_dependency "github_changelog_generator"
-  # Allows us to check in our tests that the right message is being picked up
-  spec.add_development_dependency "i18n"
-  # Adds step-by-step debugging and stack navigation capabilities to pry using
-  # byebug
-  spec.add_development_dependency "pry-byebug"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec", "~> 3.12"
-  spec.add_development_dependency "simplecov", "~> 0.22.0"
-  spec.add_development_dependency "webmock", "~> 3.18"
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
-# rubocop:enable Gemspec/RequiredRubyVersion

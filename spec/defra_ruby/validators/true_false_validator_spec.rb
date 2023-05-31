@@ -19,7 +19,7 @@ module DefraRuby
 
       it_behaves_like(
         "a selection validator",
-        TrueFalseValidator,
+        described_class,
         Test::TrueFalseValidatable,
         :attribute,
         valid: true, invalid: invalid_value
@@ -27,7 +27,7 @@ module DefraRuby
 
       it_behaves_like(
         "a selection validator",
-        TrueFalseValidator,
+        described_class,
         Test::TrueFalseValidatable,
         :attribute,
         valid: false, invalid: invalid_value

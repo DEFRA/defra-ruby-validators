@@ -21,7 +21,7 @@ module DefraRuby
       it_behaves_like("a validator")
       it_behaves_like(
         "a presence validator",
-        GridReferenceValidator,
+        described_class,
         Test::GridReferenceValidatable,
         :grid_reference,
         valid: valid_grid_reference
@@ -29,9 +29,9 @@ module DefraRuby
 
       describe "#validate_each" do
         context "when the grid reference is not valid" do
-          context "because the grid reference is not correctly formatted" do
+          context "when the grid reference is not correctly formatted" do
             validatable = Test::GridReferenceValidatable.new(invalid_grid_reference)
-            error_message = Helpers::Translator.error_message(GridReferenceValidator, :invalid_format)
+            error_message = Helpers::Translator.error_message(described_class, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -40,9 +40,9 @@ module DefraRuby
                             error_message: error_message
           end
 
-          context "because the grid reference is not a coordinate" do
+          context "when the grid reference is not a coordinate" do
             validatable = Test::GridReferenceValidatable.new(non_coordinate_grid_reference)
-            error_message = Helpers::Translator.error_message(GridReferenceValidator, :invalid)
+            error_message = Helpers::Translator.error_message(described_class, :invalid)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,

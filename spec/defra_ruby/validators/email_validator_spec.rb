@@ -20,7 +20,7 @@ module DefraRuby
       it_behaves_like("a validator")
       it_behaves_like(
         "a presence validator",
-        EmailValidator,
+        described_class,
         Test::EmailValidatable,
         :email,
         valid: valid_email
@@ -28,10 +28,10 @@ module DefraRuby
 
       describe "#validate_each" do
         context "when the email is not valid" do
-          context "because the email is not correctly formatted" do
+          context "when the email is not correctly formatted" do
             validatable = Test::EmailValidatable.new(invalid_email)
 
-            error_message = Helpers::Translator.error_message(EmailValidator, :invalid_format)
+            error_message = Helpers::Translator.error_message(described_class, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,

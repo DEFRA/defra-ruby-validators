@@ -22,14 +22,14 @@ module DefraRuby
       it_behaves_like("a validator")
       it_behaves_like(
         "a length validator",
-        PositionValidator,
+        described_class,
         Test::PositionValidatable,
         :position,
         valid: valid_position, invalid: too_long_position
       )
       it_behaves_like(
         "a characters validator",
-        PositionValidator,
+        described_class,
         Test::PositionValidatable,
         :position,
         valid: valid_position, invalid: invalid_position
@@ -37,7 +37,7 @@ module DefraRuby
 
       describe "#validate_each" do
         context "when the position is valid" do
-          context "despite being blank (because position is optional)" do
+          context "when despite being blank (because position is optional)" do
             it_behaves_like "a valid record", Test::PositionValidatable.new(empty_position)
           end
         end

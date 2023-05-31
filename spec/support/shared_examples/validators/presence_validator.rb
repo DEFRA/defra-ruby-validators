@@ -14,7 +14,7 @@ RSpec.shared_examples "a presence validator" do |validator, validatable_class, a
     end
 
     context "when the #{attribute} is not valid" do
-      context "because the #{attribute} is not present" do
+      context "when the #{attribute} is not present" do
         validatable = validatable_class.new
         error_message = Helpers::Translator.error_message(validator, :blank)
 

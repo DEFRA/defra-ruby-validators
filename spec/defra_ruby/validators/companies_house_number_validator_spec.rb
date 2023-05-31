@@ -20,6 +20,13 @@ module DefraRuby
   module Validators
     RSpec.describe CompaniesHouseNumberValidator do
 
+      let(:companies_house_service) { instance_double(CompaniesHouseService) }
+
+      before do
+        allow(CompaniesHouseService).to receive(:new).and_return(companies_house_service)
+        allow(companies_house_service).to receive(:status)
+      end
+
       valid_numbers = %w[10997904 09764739 SC534714 IP00141R]
       invalid_format_number = "foobar42"
       unknown_number = "99999999"
@@ -29,21 +36,19 @@ module DefraRuby
 
       describe "#validate_each" do
         context "when given a valid company number" do
-          before do
-            allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:active)
-          end
+          before { allow(companies_house_service).to receive(:status).and_return(:active) }
 
           valid_numbers.each do |company_no|
-            context "like #{company_no}" do
+            context "with #{company_no}" do
               it_behaves_like "a valid record", Test::CompaniesHouseNumberValidatable.new(company_no)
             end
           end
         end
 
         context "when given an invalid company number" do
-          context "because it is blank" do
+          context "when it is blank" do
             validatable = Test::CompaniesHouseNumberValidatable.new
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :blank)
+            error_message = Helpers::Translator.error_message(described_class, :blank)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -52,9 +57,9 @@ module DefraRuby
                             error_message: error_message
           end
 
-          context "because the format is wrong" do
+          context "when the format is wrong" do
             validatable = Test::CompaniesHouseNumberValidatable.new(invalid_format_number)
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :invalid_format)
+            error_message = Helpers::Translator.error_message(described_class, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -63,9 +68,9 @@ module DefraRuby
                             error_message: error_message
           end
 
-          context "because it consists of all zeroes" do
+          context "when it consists of all zeroes" do
             validatable = Test::CompaniesHouseNumberValidatable.new("00000000")
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :invalid_format)
+            error_message = Helpers::Translator.error_message(described_class, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -74,13 +79,11 @@ module DefraRuby
                             error_message: error_message
           end
 
-          context "because it's not found on companies house" do
-            before do
-              allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:not_found)
-            end
+          context "when it's not found on companies house" do
+            before { allow(companies_house_service).to receive(:status).and_return(:not_found) }
 
             validatable = Test::CompaniesHouseNumberValidatable.new(unknown_number)
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :not_found)
+            error_message = Helpers::Translator.error_message(described_class, :not_found)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -89,13 +92,11 @@ module DefraRuby
                             error_message: error_message
           end
 
-          context "because it's not 'active' on companies house" do
-            before do
-              allow_any_instance_of(CompaniesHouseService).to receive(:status).and_return(:inactive)
-            end
+          context "when it's not 'active' on companies house" do
+            before { allow(companies_house_service).to receive(:status).and_return(:inactive) }
 
             validatable = Test::CompaniesHouseNumberValidatable.new(inactive_number)
-            error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :inactive)
+            error_message = Helpers::Translator.error_message(described_class, :inactive)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
@@ -108,20 +109,18 @@ module DefraRuby
             let(:company_no) { valid_numbers.first }
 
             it "calls the companies house service with the `ltd` param" do
-              expect(CompaniesHouseService).to receive(:new).with(company_no, "ltd")
-
               Test::CompaniesHouseCompanyTypeAndNumberValidatable.new(company_no).valid?
+
+              expect(CompaniesHouseService).to have_received(:new).with(company_no, "ltd")
             end
           end
         end
 
         context "when there is an error connecting with companies house" do
-          before do
-            allow_any_instance_of(CompaniesHouseService).to receive(:status).and_raise(StandardError)
-          end
+          before { allow(companies_house_service).to receive(:status).and_raise(StandardError) }
 
           validatable = Test::CompaniesHouseNumberValidatable.new(valid_numbers.sample)
-          error_message = Helpers::Translator.error_message(CompaniesHouseNumberValidator, :error)
+          error_message = Helpers::Translator.error_message(described_class, :error)
 
           it_behaves_like "an invalid record",
                           validatable: validatable,

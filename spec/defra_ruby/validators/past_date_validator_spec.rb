@@ -23,13 +23,13 @@ module DefraRuby
                       validatable: Test::PastDateValidatable.new(future_date),
                       attribute: :date,
                       error: :past_date,
-                      error_message: Helpers::Translator.error_message(PastDateValidator, :past_date)
+                      error_message: Helpers::Translator.error_message(described_class, :past_date)
 
       it_behaves_like "an invalid record",
                       validatable: Test::PastDateValidatable.new(invalid_date),
                       attribute: :date,
                       error: :invalid_date,
-                      error_message: Helpers::Translator.error_message(PastDateValidator, :invalid_date)
+                      error_message: Helpers::Translator.error_message(described_class, :invalid_date)
     end
   end
 end

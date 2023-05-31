@@ -27,14 +27,14 @@ module DefraRuby
       it_behaves_like("a validator")
       it_behaves_like(
         "a presence validator",
-        PhoneNumberValidator,
+        described_class,
         Test::PhoneNumberValidatable,
         :phone_number,
         valid: valid_number
       )
       it_behaves_like(
         "a length validator",
-        PhoneNumberValidator,
+        described_class,
         Test::PhoneNumberValidatable,
         :phone_number,
         valid: valid_number, invalid: too_long_number
@@ -42,9 +42,9 @@ module DefraRuby
 
       describe "#validate_each" do
         context "when the phone number is not valid" do
-          context "because the phone number is not correctly formatted" do
+          context "when the phone number is not correctly formatted" do
             validatable = Test::PhoneNumberValidatable.new(invalid_number)
-            error_message = Helpers::Translator.error_message(PhoneNumberValidator, :invalid_format)
+            error_message = Helpers::Translator.error_message(described_class, :invalid_format)
 
             it_behaves_like "an invalid record",
                             validatable: validatable,
