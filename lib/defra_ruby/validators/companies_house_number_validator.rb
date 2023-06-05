@@ -31,7 +31,8 @@ module DefraRuby
       end
 
       def format_is_valid?(record, attribute, value)
-        return true if value.match?(VALID_COMPANIES_HOUSE_REGISTRATION_NUMBER_REGEX)
+        # All-zero values are invalid, despite matching the main regex
+        return true if value.match?(VALID_COMPANIES_HOUSE_REGISTRATION_NUMBER_REGEX) && !value.match(/^0+$/)
 
         add_validation_error(record, attribute, :invalid_format)
         false

@@ -20,7 +20,7 @@ module DefraRuby
       it_behaves_like("a validator")
       it_behaves_like(
         "a selection validator",
-        BusinessTypeValidator,
+        described_class,
         Test::BusinessTypeValidatable,
         :business_type,
         valid: valid_type, invalid: invalid_type
@@ -42,7 +42,7 @@ module DefraRuby
             allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return({})
           end
 
-          error_message = Helpers::Translator.error_message(BusinessTypeValidator, :inclusion)
+          error_message = Helpers::Translator.error_message(described_class, :inclusion)
 
           it_behaves_like "an invalid record",
                           validatable: validatable,

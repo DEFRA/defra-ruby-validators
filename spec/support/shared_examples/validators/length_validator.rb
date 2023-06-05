@@ -14,7 +14,7 @@ RSpec.shared_examples "a length validator" do |validator, validatable_class, att
     end
 
     context "when the #{attribute} is not valid" do
-      context "because the #{attribute} is too long" do
+      context "when the #{attribute} is too long" do
         validatable = validatable_class.new(values[:invalid])
         error_message = Helpers::Translator.error_message(validator, :too_long)
 

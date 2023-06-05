@@ -14,7 +14,7 @@ RSpec.shared_examples "a characters validator" do |validator, validatable_class,
     end
 
     context "when the #{attribute} is not valid" do
-      context "because the #{attribute} is not correctly formatted" do
+      context "when the #{attribute} is not correctly formatted" do
         validatable = validatable_class.new(values[:invalid])
         error_message = Helpers::Translator.error_message(validator, :invalid_format)
 

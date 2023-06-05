@@ -18,11 +18,11 @@ RSpec.describe DefraRuby::Validators::Configuration do
     fresh_config = described_class.new
 
     expect(fresh_config.companies_house_host).to eq("https://api.companieshouse.gov.uk/company/")
-    expect(fresh_config.companies_house_api_key).to eq(nil)
+    expect(fresh_config.companies_house_api_key).to be_nil
   end
 
   describe "#ensure_valid" do
-    before(:each) do
+    before do
       described_class::ATTRIBUTES.each do |attribute|
         subject.public_send("#{attribute}=", "foo")
       end
@@ -30,13 +30,13 @@ RSpec.describe DefraRuby::Validators::Configuration do
 
     context "when all of the attributes are present" do
       it "does not raise an error" do
-        expect { subject.ensure_valid }.to_not raise_error
-        expect(subject.ensure_valid).to eq(true)
+        expect { subject.ensure_valid }.not_to raise_error
+        expect(subject.ensure_valid).to be(true)
       end
     end
 
     context "when at least one of the attributes is missing" do
-      before(:each) do
+      before do
         subject.companies_house_api_key = nil
       end
 
