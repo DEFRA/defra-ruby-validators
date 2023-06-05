@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/defra/defra-ruby-validators/tree/HEAD)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.0...HEAD)
+
+**Fixed bugs:**
+
+- Add a check for all-zeroes companies house values [\#63](https://github.com/DEFRA/defra-ruby-validators/pull/63) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+
 ## [v2.5.0](https://github.com/defra/defra-ruby-validators/tree/v2.5.0) (2022-01-11)
 
 [Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.4.1...v2.5.0)
