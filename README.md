@@ -144,6 +144,16 @@ Add it to your model or form object using
 validates :phone_number, "defra_ruby/validators/phone_number": true
 ```
 
+### Mobile phone number
+
+This validator checks the value is present, is not too long (15 is th maximum length for any phone number), is a mobile phone number, and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
+
+Add it to your model or form object using
+
+```ruby
+validates :mobile_phone_number, "defra_ruby/validators/mobile_phone_number": true
+```
+
 ### Position
 
 This validator checks the value provided for 'position' i.e. someones role or title within an organisation. This is an optional field so the validator has to handle the value being blank. If it's not then it can be no longer than 70 characters and only include letters, spaces, commas, full stops, hyphens and apostrophes else it will return an error.

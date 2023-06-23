@@ -1,0 +1,7 @@
+en:
+  defra_ruby:
+    validators:
+      MobilePhoneNumberValidator:
+        blank: "Enter a mobile phone number"
+        invalid_format: "Enter a valid mobile phone number"
+        too_long: "Check the number you entered - it should have no more than than 15 characters"
