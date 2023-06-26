@@ -2,11 +2,23 @@
 
 ## [Unreleased](https://github.com/defra/defra-ruby-validators/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.0...HEAD)
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.1...HEAD)
+
+**Implemented enhancements:**
+
+- Adding validator for mobile phone number [\#65](https://github.com/DEFRA/defra-ruby-validators/pull/65) ([brujeo](https://github.com/brujeo))
+
+## [v2.5.1](https://github.com/defra/defra-ruby-validators/tree/v2.5.1) (2023-06-05)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.0...v2.5.1)
 
 **Fixed bugs:**
 
 - Add a check for all-zeroes companies house values [\#63](https://github.com/DEFRA/defra-ruby-validators/pull/63) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+
+**Merged pull requests:**
+
+- Release/v2.5.1 [\#64](https://github.com/DEFRA/defra-ruby-validators/pull/64) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 
 ## [v2.5.0](https://github.com/defra/defra-ruby-validators/tree/v2.5.0) (2022-01-11)
 
