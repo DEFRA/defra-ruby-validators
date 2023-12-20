@@ -40,6 +40,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "phonelib"
   # Use rest-client for external requests, eg. to Companies House
   spec.add_dependency "rest-client", "~> 2.0"
+  # Used to validate UK postcodes
+  spec.add_dependency "uk_postcode"
   # Use to validate e-mail addresses against RFC 2822 and RFC 3696
   spec.add_dependency "validates_email_format_of"
   spec.metadata["rubygems_mfa_required"] = "true"

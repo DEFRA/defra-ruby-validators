@@ -1,0 +1,6 @@
+en:
+  defra_ruby:
+    validators:
+      PostcodeValidator:
+        blank: "Enter a postcode"
+        invalid_format: "Enter a valid postcode - there’s a mistake in that one"
