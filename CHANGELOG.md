@@ -2,11 +2,23 @@
 
 ## [Unreleased](https://github.com/defra/defra-ruby-validators/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.1...HEAD)
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.2...HEAD)
+
+**Implemented enhancements:**
+
+- Add UK postcode validator [\#67](https://github.com/DEFRA/defra-ruby-validators/pull/67) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+
+## [v2.5.2](https://github.com/defra/defra-ruby-validators/tree/v2.5.2) (2023-06-26)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.1...v2.5.2)
 
 **Implemented enhancements:**
 
 - Adding validator for mobile phone number [\#65](https://github.com/DEFRA/defra-ruby-validators/pull/65) ([brujeo](https://github.com/brujeo))
+
+**Merged pull requests:**
+
+- Release/v2.5.2 [\#66](https://github.com/DEFRA/defra-ruby-validators/pull/66) ([brujeo](https://github.com/brujeo))
 
 ## [v2.5.1](https://github.com/defra/defra-ruby-validators/tree/v2.5.1) (2023-06-05)
 
