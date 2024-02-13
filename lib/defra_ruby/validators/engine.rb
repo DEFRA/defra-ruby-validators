@@ -14,8 +14,11 @@ module DefraRuby
       # Load I18n translation files from engine before loading ones from the host app
       # This means values in the host app can override those in the engine
       config.before_initialize do
+        Rails.logger.warn "\n>>>>>>>>> gem load_path was: #{config.i18n.load_path}\n"
         engine_locales = Dir["#{config.root}/config/locales/**/*.yml"]
+        Rails.logger.warn "\n>>>>>>>>> gem engine adding: #{engine_locales}\n"
         config.i18n.load_path = engine_locales + config.i18n.load_path
+        Rails.logger.warn "\n>>>>>>>>> gem load_path now: #{config.i18n.load_path}\n"
       end
     end
   end
