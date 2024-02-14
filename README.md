@@ -83,7 +83,7 @@ Note: to mock the Companies House service with the `company_type` option, you wi
 
 ### Email
 
-This validator checks the value is present and in a format that meets [RFC 2822](https://tools.ietf.org/html/rfc2822) and [RFC 3696](https://tools.ietf.org/html/rfc3696) (we use [validates_email_format_of](https://github.com/validates-email-format-of/validates_email_format_of) to check the format).
+This validator checks that the value is present and in a format that meets [RFC 2822](https://tools.ietf.org/html/rfc2822) and [RFC 3696](https://tools.ietf.org/html/rfc3696) (we use [validates_email_format_of](https://github.com/validates-email-format-of/validates_email_format_of) to check the format).
 
 Add it to your model or form object using
 
@@ -91,9 +91,19 @@ Add it to your model or form object using
 validates :email, "defra_ruby/validators/email": true
 ```
 
+### Postcode
+
+This validator checks that the value is present and is in the correct format for a [UK postcode](https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#:~:text=The%20outward%20code%20includes%20the,%2C%20and%20%22L1%208JQ%22.).
+
+Add it to your model or form object using
+
+```ruby
+validates :postcode, "defra_ruby/validators/postcode": true
+```
+
 ### Grid reference
 
-This validator checks the value is present, is in the correct format for an [Ordnance Survey National Grid Reference](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid), and that its valid (we use [os_map_ref](https://github.com/DEFRA/os-map-ref) to check the coordinate is valid).
+This validator checks that the value is present, is in the correct format for an [Ordnance Survey National Grid Reference](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid), and that its valid (we use [os_map_ref](https://github.com/DEFRA/os-map-ref) to check the coordinate is valid).
 
 Add it to your model or form object using
 
@@ -136,7 +146,7 @@ validates :date_received, "defra_ruby/validators/past_date_validator": true
 
 ### Phone number
 
-This validator checks the value is present, is not too long (15 is th maximum length for any phone number), and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
+This validator checks that the value is present, is not too long (15 is th maximum length for any phone number), and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
 
 Add it to your model or form object using
 
@@ -146,7 +156,7 @@ validates :phone_number, "defra_ruby/validators/phone_number": true
 
 ### Mobile phone number
 
-This validator checks the value is present, is not too long (15 is th maximum length for any phone number), is a mobile phone number, and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
+This validator checks that the value is present, is not too long (15 is th maximum length for any phone number), is a mobile phone number, and is in the correct format as per [E.164](https://en.wikipedia.org/wiki/E.164) (we use [phonelib](https://github.com/daddyz/phonelib) to check the format).
 
 Add it to your model or form object using
 
@@ -166,7 +176,7 @@ validates :position, "defra_ruby/validators/position": true
 
 ### Token
 
-This validator checks the value is present and in the correct format, which in this case is that the value has a length of 24. If blank or not in a valid format it will return an error.
+This validator checks that the value is present and in the correct format, which in this case is that the value has a length of 24. If blank or not in a valid format it will return an error.
 
 Add it to your model or form object using
 
