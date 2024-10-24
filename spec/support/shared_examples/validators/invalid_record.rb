@@ -20,7 +20,15 @@ RSpec.shared_examples "an invalid record" do |validatable:, attribute:, error:, 
     let(:custom_message) { "something is wrong (in a customised way)" }
     let(:messages) { { error => custom_message } }
 
-    before { allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return(messages: messages) }
+    before do
+      # Merge custom message with any pre-existing options
+      original_options = validatable._validators[attribute].first.options
+      # Make a modifiable copy as the original is frozen
+      options = original_options.dup
+      options[:messages] = messages
+
+      allow_any_instance_of(DefraRuby::Validators::BaseValidator).to receive(:options).and_return(options)
+    end
 
     it "uses the custom message instead of the default" do
       validatable.valid?

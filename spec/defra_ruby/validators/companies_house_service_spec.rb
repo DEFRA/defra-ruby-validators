@@ -6,11 +6,11 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
   let(:host) { "https://api.companieshouse.gov.uk/" }
 
   describe "#status" do
-    subject(:companies_house_service) { described_class.new(company_no) }
+    subject(:companies_house_service) { described_class.new(company_number:) }
 
-    let(:company_no) { "09360070" }
+    let(:company_number) { "09360070" }
 
-    context "when the company_no is for an active company" do
+    context "when the company_number is for an active company" do
       before do
         expected_body = { company_status: "active", type: "ltd" }
 
@@ -20,24 +20,24 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
         )
       end
 
-      context "with an eight-digit company_no" do
-        let(:company_no) { "19360070" }
+      context "with an eight-digit company_number" do
+        let(:company_number) { "19360070" }
 
         it "returns :active" do
           expect(companies_house_service.status).to eq(:active)
         end
       end
 
-      context "with a seven-digit company_no with a leading zero" do
-        let(:company_no) { "09360070" }
+      context "with a seven-digit company_number with a leading zero" do
+        let(:company_number) { "09360070" }
 
         it "returns :active" do
           expect(companies_house_service.status).to eq(:active)
         end
       end
 
-      context "with a seven-digit company_no without a leading zero" do
-        let(:company_no) { "9360070" }
+      context "with a seven-digit company_number without a leading zero" do
+        let(:company_number) { "9360070" }
 
         it "returns :active" do
           expect(companies_house_service.status).to eq(:active)
@@ -45,7 +45,7 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
     end
 
-    context "when the company_no is not found" do
+    context "when the company_number is not found" do
       before do
         stub_request(:any, /.*#{host}.*/).to_return(
           status: 404
@@ -57,7 +57,7 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
       end
     end
 
-    context "when the company_no is inactive" do
+    context "when the company_number is inactive" do
       before do
         expected_body = { company_status: "dissolved", type: "ltd" }
 
@@ -73,28 +73,53 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
     end
 
     context "when checking the company_type" do
-      let(:companies_house_service) { described_class.new("09360070", "llp") }
+      subject(:companies_house_service) { described_class.new(company_number: "09360070", permitted_types:) }
 
-      context "when the company_no is for a LLP" do
-        before do
-          stub_request(:any, /.*#{host}.*/).to_return(
-            status: 200,
-            body: expected_body.to_json
-          )
+      let(:expected_body) { { company_status: "active", type: actual_type } }
+
+      before do
+        stub_request(:any, /.*#{host}.*/).to_return(
+          status: 200,
+          body: expected_body.to_json
+        )
+      end
+
+      context "when no permitted company types are specified" do
+        let(:permitted_types) { nil }
+        let(:actual_type) { nil }
+
+        it { expect(companies_house_service.status).to eq(:active) }
+      end
+
+      context "when a single permitted company type is specified" do
+        let(:permitted_types) { "ltd" }
+
+        context "when the actual type is llp" do
+          let(:actual_type) { "llp" }
+
+          it { expect(companies_house_service.status).to eq(:unsupported_company_type) }
         end
 
-        let(:expected_body) { { company_status: "active", type: "llp" } }
+        context "when the actual type is ltd" do
+          let(:actual_type) { "ltd" }
 
-        it "returns :active" do
-          expect(companies_house_service.status).to eq(:active)
+          it { expect(companies_house_service.status).to eq(:active) }
+        end
+      end
+
+      context "when multiple permitted company types are specified" do
+        let(:permitted_types) { %w[ltd llp] }
+
+        context "when the actual type is llp" do
+          let(:actual_type) { "llp" }
+
+          it { expect(companies_house_service.status).to eq(:active) }
         end
 
-        context "when a ltd company is found" do
-          let(:expected_body) { { company_status: "active", type: "ltd" } }
+        context "when the actual type is ltd" do
+          let(:actual_type) { "ltd" }
 
-          it "returns :not_found" do
-            expect(companies_house_service.status).to eq(:not_found)
-          end
+          it { expect(companies_house_service.status).to eq(:active) }
         end
       end
     end

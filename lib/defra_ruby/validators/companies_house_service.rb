@@ -5,15 +5,17 @@ require "rest-client"
 module DefraRuby
   module Validators
     class CompaniesHouseService
-      def initialize(company_no, company_type = nil)
-        @company_no = company_no
-        @url = "#{DefraRuby::Validators.configuration.companies_house_host}#{@company_no}"
+      def initialize(company_number:, permitted_types: nil)
+        validate_permitted_types
+
+        @company_number = company_number
+        @permitted_types = permitted_types
+        @url = "#{DefraRuby::Validators.configuration.companies_house_host}#{@company_number}"
         @api_key = DefraRuby::Validators.configuration.companies_house_api_key
-        @company_type = company_type
       end
 
       def status
-        return :not_found unless company_type_is_allowed?(json_response)
+        return :unsupported_company_type unless company_type_is_allowed?(json_response)
 
         status_is_allowed?(json_response) ? :active : :inactive
       rescue RestClient::ResourceNotFound
@@ -34,16 +36,30 @@ module DefraRuby
 
       private
 
+      def validate_permitted_types
+        return if @permitted_types.nil?
+
+        return if @permitted_types.is_a?(String) || @permitted_types.is_a?(Array)
+
+        raise ArgumentError, "Invalid permitted_types value - it must be nil, a string or an array of strings"
+      end
+
       def status_is_allowed?(json_response)
         %w[active voluntary-arrangement].include?(json_response["company_status"])
       end
 
       def company_type_is_allowed?(json_response)
-        # if a company_type has not been defined in the validator,
-        # we skip this check
-        return true if @company_type.blank?
+        # if permitted_types has not been defined in the validator, we skip this check
+        return true if @permitted_types.blank?
 
-        @company_type.to_s == json_response["type"]
+        case @permitted_types
+        when String
+          @permitted_types.to_s == json_response["type"]
+        when Array
+          @permitted_types.include?(json_response["type"])
+        else
+          raise ArgumentError, I18n.t("defra_ruby.validators.CompaniesHouseNumberValidator.argument_error")
+        end
       end
     end
   end

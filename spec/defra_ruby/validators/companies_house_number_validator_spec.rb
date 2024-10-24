@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "webmock/rspec"
 
 module Test
   CompaniesHouseNumberValidatable = Struct.new(:company_no) do
@@ -9,10 +10,25 @@ module Test
     validates :company_no, "defra_ruby/validators/companies_house_number": true
   end
 
-  CompaniesHouseCompanyTypeAndNumberValidatable = Struct.new(:company_no) do
+  CompaniesHouseSinglePermittedTypeAndNumberValidatable = Struct.new(:company_no) do
     include ActiveModel::Validations
 
-    validates :company_no, "defra_ruby/validators/companies_house_number": { company_type: "ltd" }
+    validates :company_no, "defra_ruby/validators/companies_house_number": { permitted_types: "ltd" }
+  end
+
+  CompaniesHouseMultiplePermittedTypesAndNumberValidatable = Struct.new(:company_no) do
+    include ActiveModel::Validations
+
+    validates :company_no, "defra_ruby/validators/companies_house_number": { permitted_types: %w[llp ltd] }
+  end
+
+  CompaniesHouseInvalidPermittedTypesAndNumberValidatable = Struct.new(:company_no) do
+    include ActiveModel::Validations
+
+    # To align with the invalid_record shared_example
+    messages = { argument_error: "something is wrong (in a customised way)" }
+
+    validates :company_no, "defra_ruby/validators/companies_house_number": { permitted_types: { foo: :bar }, messages: }
   end
 end
 
@@ -116,14 +132,45 @@ module DefraRuby
                             error_message: error_message
           end
 
-          context "with a company_type option" do
-            let(:company_no) { valid_numbers.first }
-
+          context "with a single permitted_types option" do
             it "calls the companies house service with the `ltd` param" do
-              Test::CompaniesHouseCompanyTypeAndNumberValidatable.new(company_no).valid?
+              Test::CompaniesHouseSinglePermittedTypeAndNumberValidatable.new(valid_numbers.first).valid?
 
-              expect(CompaniesHouseService).to have_received(:new).with(company_no, "ltd")
+              expect(CompaniesHouseService).to have_received(:new)
+                .with(company_number: valid_numbers.first, permitted_types: "ltd")
             end
+          end
+
+          context "with multiple permitted_types options" do
+            let(:permitted_types) { %w[llp ltd] }
+
+            it "calls the companies house service with all permitted types" do
+              Test::CompaniesHouseMultiplePermittedTypesAndNumberValidatable.new(valid_numbers.first).valid?
+
+              expect(CompaniesHouseService).to have_received(:new)
+                .with(company_number: valid_numbers.first, permitted_types:)
+            end
+          end
+
+          context "with an invalid permitted_types option" do
+            before do
+              # Override the test instance double as we need to call a real instance for this spec:
+              allow(CompaniesHouseService).to receive(:new).and_call_original
+
+              stub_request(:any, %r{.*https://api.companieshouse.gov.uk/.*}).to_return(
+                status: 200,
+                body: { company_status: "active", type: "ltd" }.to_json
+              )
+            end
+
+            validatable = Test::CompaniesHouseInvalidPermittedTypesAndNumberValidatable.new(valid_numbers.first)
+            error_message = "something is wrong (in a customised way)"
+
+            it_behaves_like "an invalid record",
+                            validatable: validatable,
+                            attribute: :company_no,
+                            error: :argument_error,
+                            error_message: error_message
           end
         end
 
