@@ -41,7 +41,7 @@ module DefraRuby
 
         return if @permitted_types.is_a?(String) || @permitted_types.is_a?(Array)
 
-        raise ArgumentError, "Invalid permitted_types value - it must be nil, a string or an array of strings"
+        raise ArgumentError, I18n.t("defra_ruby.validators.CompaniesHouseNumberValidator.argument_error")
       end
 
       def status_is_allowed?(json_response)
