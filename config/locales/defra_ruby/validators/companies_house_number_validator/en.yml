@@ -6,4 +6,6 @@ en:
         invalid_format: "Enter a valid number - it should have 8 digits, or 2 letters followed by 6 digits, or 2 letters followed by 5 digits and another letter. If your number has only 7 digits, enter it with a zero at the start."
         not_found: Companies House couldn't find a company with this number
         inactive: Your company must be registered as an active company
+        unsupported_company_type: Your company must be registered as a limited company or a limited liability partnership
+        argument_error: Invalid permitted_types value. It must be nil, a string or an array of strings.
         error: There was an error connecting with Companies House. Hopefully this is a one off and will work if you try again.

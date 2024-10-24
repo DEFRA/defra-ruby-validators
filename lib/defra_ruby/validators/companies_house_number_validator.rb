@@ -16,8 +16,8 @@ module DefraRuby
         return false unless value_is_present?(record, attribute, value)
         return false unless format_is_valid?(record, attribute, value)
 
-        company_type = options[:company_type]
-        validate_with_companies_house(record, attribute, value, company_type)
+        permitted_types = options[:permitted_types]
+        validate_with_companies_house(record, attribute, value, permitted_types)
       end
 
       private
@@ -37,18 +37,21 @@ module DefraRuby
         false
       end
 
-      def validate_with_companies_house(record, attribute, value, company_type)
-        case CompaniesHouseService.new(value, company_type).status
+      def validate_with_companies_house(record, attribute, value, permitted_types)
+        case CompaniesHouseService.new(company_number: value, permitted_types:).status
         when :active
           true
         when :inactive
           add_validation_error(record, attribute, :inactive)
         when :not_found
           add_validation_error(record, attribute, :not_found)
+        when :unsupported_company_type
+          add_validation_error(record, attribute, :unsupported_company_type)
         else
-          # Sonarcloud suggested that not having an `else` is a code smell
           add_validation_error(record, attribute, :error)
         end
+      rescue ArgumentError
+        add_validation_error(record, attribute, :argument_error)
       rescue StandardError
         add_validation_error(record, attribute, :error)
       end
