@@ -84,6 +84,13 @@ RSpec.describe DefraRuby::Validators::CompaniesHouseService do
         )
       end
 
+      context "when an invalid permitted company types value is specified" do
+        let(:permitted_types) { 0 }
+        let(:actual_type) { nil }
+
+        it { expect { companies_house_service.status }.to raise_error(ArgumentError) }
+      end
+
       context "when no permitted company types are specified" do
         let(:permitted_types) { nil }
         let(:actual_type) { nil }
