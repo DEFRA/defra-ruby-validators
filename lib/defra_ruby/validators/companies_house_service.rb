@@ -6,10 +6,11 @@ module DefraRuby
   module Validators
     class CompaniesHouseService
       def initialize(company_number:, permitted_types: nil)
-        validate_permitted_types
-
         @company_number = company_number
         @permitted_types = permitted_types
+
+        validate_permitted_types
+
         @url = "#{DefraRuby::Validators.configuration.companies_house_host}#{@company_number}"
         @api_key = DefraRuby::Validators.configuration.companies_house_api_key
       end
