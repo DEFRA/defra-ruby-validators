@@ -2,11 +2,23 @@
 
 ## [Unreleased](https://github.com/defra/defra-ruby-validators/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.2...HEAD)
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.6.0...HEAD)
 
 **Implemented enhancements:**
 
-- Add UK postcode validator [\#67](https://github.com/DEFRA/defra-ruby-validators/pull/67) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- feature/RUBY-3408\_permitted\_company\_types [\#69](https://github.com/DEFRA/defra-ruby-validators/pull/69) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+
+## [v2.6.0](https://github.com/defra/defra-ruby-validators/tree/v2.6.0) (2023-12-21)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.5.2...v2.6.0)
+
+**Implemented enhancements:**
+
+- Add UK postcode validator [\#67](https://github.com/DEFRA/defra-ruby-validators/pull/67) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+
+**Merged pull requests:**
+
+- Release/v2.6.0 [\#68](https://github.com/DEFRA/defra-ruby-validators/pull/68) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 
 ## [v2.5.2](https://github.com/defra/defra-ruby-validators/tree/v2.5.2) (2023-06-26)
 
@@ -26,11 +38,11 @@
 
 **Fixed bugs:**
 
-- Add a check for all-zeroes companies house values [\#63](https://github.com/DEFRA/defra-ruby-validators/pull/63) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Add a check for all-zeroes companies house values [\#63](https://github.com/DEFRA/defra-ruby-validators/pull/63) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 
 **Merged pull requests:**
 
-- Release/v2.5.1 [\#64](https://github.com/DEFRA/defra-ruby-validators/pull/64) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
+- Release/v2.5.1 [\#64](https://github.com/DEFRA/defra-ruby-validators/pull/64) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 
 ## [v2.5.0](https://github.com/defra/defra-ruby-validators/tree/v2.5.0) (2022-01-11)
 
