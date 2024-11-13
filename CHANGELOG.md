@@ -2,10 +2,19 @@
 
 ## [Unreleased](https://github.com/defra/defra-ruby-validators/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.6.0...HEAD)
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.7.0...HEAD)
 
 **Implemented enhancements:**
 
+- Adding price validator [\#71](https://github.com/DEFRA/defra-ruby-validators/pull/71) ([brujeo](https://github.com/brujeo))
+
+## [v2.7.0](https://github.com/defra/defra-ruby-validators/tree/v2.7.0) (2024-10-25)
+
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.6.0...v2.7.0)
+
+**Implemented enhancements:**
+
+- Release/v2.7.0 [\#70](https://github.com/DEFRA/defra-ruby-validators/pull/70) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - feature/RUBY-3408\_permitted\_company\_types [\#69](https://github.com/DEFRA/defra-ruby-validators/pull/69) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 
 ## [v2.6.0](https://github.com/defra/defra-ruby-validators/tree/v2.6.0) (2023-12-21)
