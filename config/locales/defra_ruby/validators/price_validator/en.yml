@@ -1,0 +1,6 @@
+en:
+  defra_ruby:
+    validators:
+      PriceValidator:
+        blank: "Enter a price"
+        invalid_format: "Enter a valid price - there’s a mistake in that one"

@@ -24,6 +24,7 @@ require_relative "validators/postcode_validator"
 require_relative "validators/token_validator"
 require_relative "validators/true_false_validator"
 require_relative "validators/past_date_validator"
+require_relative "validators/price_validator"
 
 module DefraRuby
   module Validators
