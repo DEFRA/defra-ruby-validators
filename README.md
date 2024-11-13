@@ -184,6 +184,16 @@ Add it to your model or form object using
 validates :is_a_farmer, "defra_ruby/validators/true_false": true
 ```
 
+### Price
+
+This validator checks the value is present and in the correct format, meaning it has no more than 2 decimal places. If blank or not in a valid format it will return an error.
+
+Add it to your model or form object using
+
+```ruby
+validates :price, "defra_ruby/validators/price": true
+```
+
 ## Adding custom error messages
 
 All the validators in this gem have built-in error messages. But if you want, you can provide your own custom message in the app, like this:
