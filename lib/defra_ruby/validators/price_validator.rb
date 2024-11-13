@@ -14,7 +14,7 @@ module DefraRuby
       private
 
       def valid_format?(record, attribute, value)
-        return true if value.match?(/\A\d{1,10}(\.\d{1,2})?\z/)
+        return true if value.to_s.match?(/\A\d{1,10}(\.\d{1,2})?\z/)
 
         add_validation_error(record, attribute, :invalid_format)
         false

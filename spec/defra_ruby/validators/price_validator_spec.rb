@@ -14,7 +14,7 @@ module DefraRuby
   module Validators
     RSpec.describe PriceValidator, type: :model do
 
-      valid_price = "323.44"
+      valid_price = 323.44
       invalid_price = "f22.53535"
 
       it_behaves_like("a validator")
