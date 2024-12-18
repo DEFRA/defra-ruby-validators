@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "rest-client"
 require "defra_ruby/companies_house"
 
 module DefraRuby
