@@ -18,14 +18,14 @@ group :development, :test do
   # Adds step-by-step debugging and stack navigation capabilities to pry using byebug
   gem "pry-byebug"
   gem "rake"
+  gem "rspec"
   gem "rspec-rails"
-  # version 1.51. is problematic: https://github.com/intel/lkp-tests/commit/8268970ffefb91983e6d70785282759b7aa291fd
-  gem "rspec", "~> 3.12"
-  gem "rubocop", "~> 1.50", require: false
+  gem "rubocop", require: false
   gem "rubocop-rake", require: false
   gem "rubocop-rspec"
+  gem "rubocop-rspec_rails"
   gem "simplecov", "~> 0.22.0", require: false
-  gem "webmock", "~> 3.18"
+  gem "webmock"
 end
 
 # Specify your gem's dependencies in defra_ruby_validators.gemspec

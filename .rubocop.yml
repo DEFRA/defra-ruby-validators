@@ -6,4 +6,18 @@ inherit_gem:
 
 require:
   - rubocop-rspec
+  - rubocop-rspec_rails
   - rubocop-rake
+
+Lint/EmptyClass:
+  AllowComments: true
+
+# In some cases using more memoized helpers makes specs more readable:
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
+
+# Rubocop counts < RSpec.describe / describe / context / context > as four levels of nesting,
+# when in reality it is a reasonable two levels.
+# Raising the max from the default to avoid having to refactor lots of tests for no real advantage.
+RSpec/NestedGroups:
+  Max: 5

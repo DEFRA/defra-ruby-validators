@@ -10,6 +10,8 @@ require "./spec/support/simplecov"
 # support files as some of them rely on the env vars being set.
 require "dotenv/load"
 
+require File.expand_path("dummy/config/environment", __dir__)
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

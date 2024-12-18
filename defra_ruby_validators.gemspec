@@ -32,6 +32,10 @@ Gem::Specification.new do |spec|
   # Include ActiveModel so that we have access to ActiveModel::Validations
   # ActiveModel::Validation is the central class within gem!
   spec.add_dependency "activemodel"
+
+  # Use the companies house gem to retrieve information from the Companies House REST API
+  spec.add_dependency "defra_ruby_companies_house"
+
   spec.add_dependency "i18n"
   spec.add_dependency "matrix"
   # Used to validate national grid references
