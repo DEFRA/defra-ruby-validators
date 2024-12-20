@@ -2,22 +2,27 @@
 
 ## [Unreleased](https://github.com/defra/defra-ruby-validators/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.7.1...HEAD)
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.7.2...HEAD)
 
-**Fixed bugs:**
+**Merged pull requests:**
 
-- refactor price\_validator to work with more than just strings [\#73](https://github.com/DEFRA/defra-ruby-validators/pull/73) ([brujeo](https://github.com/brujeo))
+- Chore/ruby 3411 use companies house gem [\#75](https://github.com/DEFRA/defra-ruby-validators/pull/75) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 
-## [v2.7.1](https://github.com/defra/defra-ruby-validators/tree/v2.7.1) (2024-11-13)
+## [v2.7.2](https://github.com/defra/defra-ruby-validators/tree/v2.7.2) (2024-11-14)
 
-[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.7.0...v2.7.1)
+[Full Changelog](https://github.com/defra/defra-ruby-validators/compare/v2.7.0...v2.7.2)
 
 **Implemented enhancements:**
 
 - Adding price validator [\#71](https://github.com/DEFRA/defra-ruby-validators/pull/71) ([brujeo](https://github.com/brujeo))
 
+**Fixed bugs:**
+
+- refactor price\_validator to work with more than just strings [\#73](https://github.com/DEFRA/defra-ruby-validators/pull/73) ([brujeo](https://github.com/brujeo))
+
 **Merged pull requests:**
 
+- Release/v2.7.2 [\#74](https://github.com/DEFRA/defra-ruby-validators/pull/74) ([brujeo](https://github.com/brujeo))
 - Release/v2.7.1 [\#72](https://github.com/DEFRA/defra-ruby-validators/pull/72) ([brujeo](https://github.com/brujeo))
 
 ## [v2.7.0](https://github.com/defra/defra-ruby-validators/tree/v2.7.0) (2024-10-25)
