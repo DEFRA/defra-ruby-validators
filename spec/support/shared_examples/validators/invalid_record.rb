@@ -12,8 +12,10 @@ RSpec.shared_examples "an invalid record" do |validatable:, attribute:, error:, 
 
   it "adds an appropriate validation error" do
     validatable.valid?
-    expect(error_message).not_to include("translation missing:")
-    expect(validatable.errors[attribute]).to eq([error_message])
+    aggregate_failures do
+      expect(error_message).not_to include("translation missing:")
+      expect(validatable.errors[attribute]).to eq([error_message])
+    end
   end
 
   context "when there are custom error messages" do

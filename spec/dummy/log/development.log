@@ -1,0 +1,42 @@
+Error getting details for company "09360070": undefined method `[]' for nil:NilClass
+
+          address[:address_line_1],
+                 ^^^^^^^^^^^^^^^^^
+Error getting details for company "09360070": undefined method `[]' for nil:NilClass
+
+          address[:address_line_1],
+                 ^^^^^^^^^^^^^^^^^
+Error getting details for company "09360070": undefined method `[]' for nil:NilClass
+
+          address[:address_line_1],
+                 ^^^^^^^^^^^^^^^^^
+Error getting details for company "09360070": undefined method `to_sym' for nil:NilClass
+
+          company_type: companies_house_api_response[:type].to_sym,
+                                                           ^^^^^^^
+Error getting details for company "09360070": Timed out connecting to server
+Error getting details for company "09360070": Exception from WebMock
+Error getting details for company "09360070": 404 Not Found
+Error getting details for company "09360070": Exception from WebMock
+Error getting details for company "09360070": Timed out connecting to server
+Error getting details for company "09360070": 404 Not Found
+Error getting details for company "09360070": undefined method `to_sym' for nil:NilClass
+
+          company_type: companies_house_api_response[:type].to_sym,
+                                                           ^^^^^^^
+Error getting details for company "09360070": undefined method `to_sym' for nil:NilClass
+
+          company_type: companies_house_api_response[:cmopany_type].to_sym,
+                                                                   ^^^^^^^
+Error getting details for company "09360070": undefined method `to_sym' for nil:NilClass
+
+          company_type: companies_house_api_response[:company_type].to_sym,
+                                                                   ^^^^^^^
+Error getting details for company "09360070": undefined method `to_sym' for nil:NilClass
+
+          company_type: companies_house_api_response[:company_type].to_sym,
+                                                                   ^^^^^^^
+Error getting details for company "09360070": undefined method `to_sym' for nil:NilClass
+
+          company_type: companies_house_api_response[:type].to_sym,
+                                                           ^^^^^^^
