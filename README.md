@@ -65,7 +65,8 @@ If the format is valid, it then makes a call to Companies House to validate that
 - is recognised
 - belongs to a company with an allowed status
 
-Allowed statuses default to `active` and `voluntary-arrangement`, preserving the existing behaviour. Services can override this when they need to accept other Companies House statuses.
+Allowed statuses default to `active` and `voluntary-arrangement`, preserving the existing behaviour.
+Services can override this when they need to accept other Companies House statuses.
 
 Add it to your model or form object using
 

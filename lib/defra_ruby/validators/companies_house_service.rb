@@ -6,6 +6,9 @@ module DefraRuby
   module Validators
     class CompaniesHouseService
       DEFAULT_PERMITTED_STATUSES = %i[active voluntary-arrangement].freeze
+      ARGUMENT_ERROR_TRANSLATION_KEY = "defra_ruby.validators.CompaniesHouseNumberValidator.argument_error"
+
+      private_constant :ARGUMENT_ERROR_TRANSLATION_KEY
 
       def initialize(company_number:, permitted_types: nil, permitted_statuses: nil)
         @company_number = company_number
@@ -35,7 +38,7 @@ module DefraRuby
 
         return if @permitted_types.is_a?(String) || @permitted_types.is_a?(Array)
 
-        raise ArgumentError, I18n.t("defra_ruby.validators.CompaniesHouseNumberValidator.argument_error")
+        raise ArgumentError, I18n.t(ARGUMENT_ERROR_TRANSLATION_KEY)
       end
 
       def validate_permitted_statuses
@@ -45,11 +48,11 @@ module DefraRuby
                   @permitted_statuses.is_a?(Symbol) ||
                   @permitted_statuses.is_a?(Array)
 
-        raise ArgumentError, I18n.t("defra_ruby.validators.CompaniesHouseNumberValidator.argument_error")
+        raise ArgumentError, I18n.t(ARGUMENT_ERROR_TRANSLATION_KEY)
       end
 
       def status_is_allowed?(companies_house_response)
-        permitted_statuses.include?(companies_house_response[:company_status])
+        permitted_statuses.include?(companies_house_response[:company_status].to_s.to_sym)
       end
 
       def permitted_statuses
@@ -67,7 +70,7 @@ module DefraRuby
         when Array
           @permitted_types.include?(companies_house_response[:company_type].to_s)
         else
-          raise ArgumentError, I18n.t("defra_ruby.validators.CompaniesHouseNumberValidator.argument_error")
+          raise ArgumentError, I18n.t(ARGUMENT_ERROR_TRANSLATION_KEY)
         end
       end
     end
