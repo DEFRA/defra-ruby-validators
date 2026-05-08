@@ -44,18 +44,16 @@ module DefraRuby
       def validate_permitted_statuses
         return if @permitted_statuses.nil?
 
-        return if @permitted_statuses.is_a?(String) ||
-                  @permitted_statuses.is_a?(Symbol) ||
-                  @permitted_statuses.is_a?(Array)
+        return if @permitted_statuses.is_a?(String) || @permitted_statuses.is_a?(Array)
 
         raise ArgumentError, I18n.t(ARGUMENT_ERROR_TRANSLATION_KEY)
       end
 
       def status_is_allowed?(companies_house_response)
-        permitted_statuses.include?(companies_house_response[:company_status].to_s.to_sym)
+        normalised_permitted_statuses.include?(companies_house_response[:company_status].to_s.to_sym)
       end
 
-      def permitted_statuses
+      def normalised_permitted_statuses
         @permitted_statuses ||= DEFAULT_PERMITTED_STATUSES
         Array(@permitted_statuses).map { |status| status.to_s.to_sym }
       end
