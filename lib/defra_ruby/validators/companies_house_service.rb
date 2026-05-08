@@ -34,19 +34,19 @@ module DefraRuby
       end
 
       def validate_permitted_types
-        return if @permitted_types.nil?
-
-        return if @permitted_types.is_a?(String) || @permitted_types.is_a?(Array)
+        return if valid_permitted_option?(@permitted_types)
 
         raise ArgumentError, I18n.t(ARGUMENT_ERROR_TRANSLATION_KEY)
       end
 
       def validate_permitted_statuses
-        return if @permitted_statuses.nil?
-
-        return if @permitted_statuses.is_a?(String) || @permitted_statuses.is_a?(Array)
+        return if valid_permitted_option?(@permitted_statuses)
 
         raise ArgumentError, I18n.t(ARGUMENT_ERROR_TRANSLATION_KEY)
+      end
+
+      def valid_permitted_option?(option)
+        option.nil? || option.is_a?(String) || option.is_a?(Array)
       end
 
       def status_is_allowed?(companies_house_response)
